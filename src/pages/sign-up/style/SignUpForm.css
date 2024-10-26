@@ -1,0 +1,62 @@
+.container {
+    max-width: 500px;
+    margin: auto;
+}
+
+.logo-img {
+    position: absolute;
+    top: 20px;
+    left: 70px;
+    width: 100px;
+}
+
+.gear-img {
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    width: 150px;
+}
+
+.btn-div {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    background-color: #61C6E8;
+    color: white;
+    width: 200px;
+}
+
+.title {
+    text-align: center;
+}
+
+.sign-up-txt {
+    color: #61C6E8;
+}
+
+.label {
+    color: #7D7D7D;
+}
+
+.log-in-txt {
+    color: #61C6E8 !important;
+}
+
+.txt{
+    display: block;
+    text-align: center;
+}
+
+/* ///////////////////////////////////////// */
+
+@media (max-width: 900px) {
+    .logo-img {
+        display: none;
+    }
+
+    .gear-img {
+        display: none;
+    }
+}

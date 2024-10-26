@@ -1,5 +1,8 @@
 import React from 'react';
 import { Form, Input, Checkbox, Button, Typography, Row, Col } from 'antd';
+import Logo from '../../assets/skill-mart-logo.png'
+import Gear from '../../assets/gear.png'
+import './style/SignUpForm.css'
 
 const { Title, Text } = Typography;
 
@@ -20,14 +23,18 @@ const SignupForm: React.FC = () => {
     };
 
     return (
-        <div style={{ maxWidth: '500px', margin: 'auto' }}>
-            <Title level={3} style={{ textAlign: 'center', color: '#1890ff' }}>
-                Sign Up to Find Work
+        <div className='container'>
+            <img src={Logo} alt="Logo" className='logo-img' />
+            <img src={Gear} alt="Settings" className='gear-img' />
+
+            <Title level={3} className='title'>
+                <span className='sign-up-txt'>Sign Up</span>  to Find Work
             </Title>
 
             <Form
                 layout="vertical"
                 onFinish={onFinish}
+                requiredMark={false}
                 initialValues={{
                     agreement: false,
                 }}
@@ -36,42 +43,44 @@ const SignupForm: React.FC = () => {
                 <Row gutter={16}>
                     <Col span={12}>
                         <Form.Item
-                            label="First Name"
+                            label={<span className='label'>First Name</span>}
                             name="firstName"
                             rules={[{ required: true, message: 'Please enter your first name' }]}
                         >
-                            <Input placeholder="First Name" />
+                            <Input />
                         </Form.Item>
 
                     </Col>
                     <Col span={12}>
                         <Form.Item
-                            label="Last Name"
+                            label={<span className='label'>Last Name</span>}
                             name="lastName"
                             rules={[{ required: true, message: 'Please enter your last name' }]}
                         >
-                            <Input placeholder="Last Name" />
+                            <Input />
                         </Form.Item>
                     </Col>
-                    
+
                 </Row>
 
                 <Row gutter={16}>
                     <Col span={12}>
-                        <Form.Item label="Nick Name (Optional)" name="nickname">
-                            <Input placeholder="Nick Name" />
+                        <Form.Item
+                            label={<span className='label'>Nick Name (Optional)</span>}
+                            name="nickname">
+                            <Input />
                         </Form.Item>
                     </Col>
                     <Col span={12}>
                         <Form.Item
-                            label="Email"
+                            label={<span className='label'>Email</span>}
                             name="email"
                             rules={[
                                 { required: true, message: 'Please enter a valid email' },
                                 { type: 'email', message: 'Invalid email format' },
                             ]}
                         >
-                            <Input placeholder="Email" />
+                            <Input />
                         </Form.Item>
                     </Col>
 
@@ -79,16 +88,16 @@ const SignupForm: React.FC = () => {
                 <Row gutter={16}>
                     <Col span={12}>
                         <Form.Item
-                            label="Password"
+                            label={<span className='label'>Password</span>}
                             name="password"
                             rules={[{ required: true, message: 'Please enter your password' }]}
                         >
-                            <Input.Password placeholder="Password" />
+                            <Input.Password />
                         </Form.Item>
                     </Col>
                     <Col span={12}>
                         <Form.Item
-                            label="Confirm Password"
+                            label={<span className='label'>Confirm Password</span>}
                             name="confirmPassword"
                             dependencies={['password']}
                             rules={[
@@ -103,7 +112,7 @@ const SignupForm: React.FC = () => {
                                 }),
                             ]}
                         >
-                            <Input.Password placeholder="Confirm Password" />
+                            <Input.Password />
                         </Form.Item>
                     </Col>
 
@@ -111,11 +120,11 @@ const SignupForm: React.FC = () => {
                 <Row gutter={16}>
                     <Col span={12}>
                         <Form.Item
-                            label="Phone Number"
+                            label={<span className='label'>Phone Number</span>}
                             name="phoneNumber"
                             rules={[{ required: true, message: 'Please enter your phone number' }]}
                         >
-                            <Input placeholder="+94" addonBefore="+94" />
+                            <Input addonBefore="+94" />
                         </Form.Item>
                     </Col>
                 </Row>
@@ -131,20 +140,26 @@ const SignupForm: React.FC = () => {
                         },
                     ]}
                 >
-                    <Checkbox>
-                        By signing up, I agree to SkillMart's <a href="#">Terms & Conditions</a> and{' '}
-                        <a href="#">Privacy Policy</a>.
+                    <Checkbox >
+                        <span className='label'>By signing up, I agree to SkillMart's</span>
+                        <a href="#"> Terms & Conditions</a> <span className='label'>and </span>
+                        <a href="#">Privacy Policy.</a>
                     </Checkbox>
                 </Form.Item>
 
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" block>
-                        Create My Account
-                    </Button>
+                    <div className='btn-div'>
+                        <Button
+                            className='btn'
+                            htmlType="submit"
+                        >
+                            Create My Account
+                        </Button>
+                    </div>
                 </Form.Item>
 
-                <Text type="secondary" style={{ display: 'block', textAlign: 'center', marginTop: '0px' }}>
-                    Already have an account? <a href="#">Log In</a>
+                <Text type="secondary" className='txt'>
+                    Already have an account? <a className='log-in-txt' href="#">Log In</a>
                 </Text>
             </Form>
         </div>
