@@ -1,8 +1,9 @@
 import React from 'react';
-import { Form, Input, Checkbox, Button, Typography, Row, Col } from 'antd';
+import { Form, Input, Checkbox, Button, Typography, Row, Col, Select, Space } from 'antd';
 import Logo from '../../assets/skill-mart-logo.png'
 import Gear from '../../assets/gear.png'
 import './style/SignUpForm.css'
+import TextArea from 'antd/es/input/TextArea';
 
 const { Title, Text } = Typography;
 
@@ -28,7 +29,7 @@ const SignupForm: React.FC = () => {
             <img src={Gear} alt="Settings" className='gear-img' />
 
             <Title level={3} className='title'>
-                <span className='sign-up-txt'>Sign Up</span>  to Find Work
+                Worker Registration
             </Title>
 
             <Form
@@ -63,59 +64,16 @@ const SignupForm: React.FC = () => {
 
                 </Row>
 
-                <Row gutter={16}>
-                    <Col span={12}>
+                <Row >
+                    <Col span={24}>
                         <Form.Item
-                            label={<span className='label'>Nick Name (Optional)</span>}
-                            name="nickname">
-                            <Input />
-                        </Form.Item>
-                    </Col>
-                    <Col span={12}>
-                        <Form.Item
-                            label={<span className='label'>Email</span>}
-                            name="email"
-                            rules={[
-                                { required: true, message: 'Please enter a valid email' },
-                                { type: 'email', message: 'Invalid email format' },
-                            ]}
+                            label={<span className='label'>Address</span>}
+                            name="address"
+                            rules={[{ required: true, message: 'Please enter your address' }]}
                         >
                             <Input />
                         </Form.Item>
                     </Col>
-
-                </Row>
-                <Row gutter={16}>
-                    <Col span={12}>
-                        <Form.Item
-                            label={<span className='label'>Password</span>}
-                            name="password"
-                            rules={[{ required: true, message: 'Please enter your password' }]}
-                        >
-                            <Input.Password />
-                        </Form.Item>
-                    </Col>
-                    <Col span={12}>
-                        <Form.Item
-                            label={<span className='label'>Confirm Password</span>}
-                            name="confirmPassword"
-                            dependencies={['password']}
-                            rules={[
-                                { required: true, message: 'Please confirm your password' },
-                                ({ getFieldValue }) => ({
-                                    validator(_, value) {
-                                        if (!value || getFieldValue('password') === value) {
-                                            return Promise.resolve();
-                                        }
-                                        return Promise.reject(new Error('Passwords do not match!'));
-                                    },
-                                }),
-                            ]}
-                        >
-                            <Input.Password />
-                        </Form.Item>
-                    </Col>
-
                 </Row>
                 <Row gutter={16}>
                     <Col span={12}>
@@ -127,40 +85,72 @@ const SignupForm: React.FC = () => {
                             <Input addonBefore="+94" />
                         </Form.Item>
                     </Col>
+                    <Col span={12}>
+                        <Form.Item
+                            label={<span className='label'>Facebook Profile Link(Optional) </span>}
+                            name="fbLink"
+                        >
+                            <Input />
+                        </Form.Item>
+                    </Col>
                 </Row>
-                <Form.Item
-                    name="agreement"
-                    valuePropName="checked"
-                    rules={[
-                        {
-                            validator: (_, value) =>
-                                value
-                                    ? Promise.resolve()
-                                    : Promise.reject(new Error('Please accept the terms and conditions')),
-                        },
-                    ]}
-                >
-                    <Checkbox >
-                        <span className='label'>By signing up, I agree to SkillMart's</span>
-                        <a href="#"> Terms & Conditions</a> <span className='label'>and </span>
-                        <a href="#">Privacy Policy.</a>
-                    </Checkbox>
-                </Form.Item>
+                <Row gutter={16}>
+                    <Col span={12}>
+                        <Form.Item
+                            label={<span className='label'>Type of Work</span>}
+                            name="typeOfWork"
+                            rules={[{ required: true, message: 'Please enter your work type' }]}
+                        >
+                            <Select>
+                                <Select.Option value="1">Test 1</Select.Option>
+                                <Select.Option value="2">Test 2</Select.Option>
+                                
+                            </Select>
+                        </Form.Item>
+                    </Col>
+                    <Col span={12}>
+                        <Form.Item
+                            label={<span className='label'>Availability Area</span>}
+                            name="AvailabilityAria"
+                            rules={[{ required: true, message: 'Please enter your availability area' }]}
+                        >
+                            <Select>
+                                <Select.Option value="1">Test 1</Select.Option>
+                                <Select.Option value="2">Test 2</Select.Option>
 
+                            </Select>
+                        </Form.Item>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col span={24}>
+                        <Form.Item
+                            label={<span className='label'>Qualifications/ Experience </span>}
+                            name="qualifications"
+                            rules={[{ required: true, message: 'Please enter your qualifications' }]}
+                        >
+                            <TextArea  />
+                        </Form.Item>
+                    </Col>
+                </Row>
                 <Form.Item>
                     <div className='btn-div'>
-                        <Button
-                            className='btn'
-                            htmlType="submit"
-                        >
-                            Create My Account
-                        </Button>
+                        <Space>
+                            <Button
+                                className='cancel-btn'
+                            >
+                                Cancel
+                            </Button>
+                            <Button
+                                className='btn'
+                                htmlType="submit"
+                            >
+                                Submit
+                            </Button>
+                        </Space>
+                        
                     </div>
                 </Form.Item>
-
-                <Text type="secondary" className='txt'>
-                    Already have an account? <a className='log-in-txt' href="#">Log In</a>
-                </Text>
             </Form>
         </div>
     );
