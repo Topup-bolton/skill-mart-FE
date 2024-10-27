@@ -19,21 +19,26 @@
 
 .btn-div {
     display: flex;
-    justify-content: center;
+    justify-content: end;
+    margin-top: -30px;
 }
 
 .btn {
     background-color: #61C6E8;
     color: white;
-    width: 200px;
+    border-radius: 50px;
+    border: none;
+}
+
+.cancel-btn {
+    border: 1px solid #61C6E8;
+    border-radius: 50px;
+    color: #61C6E8;
 }
 
 .title {
     text-align: center;
-}
-
-.sign-up-txt {
-    color: #61C6E8;
+    color: #61C6E8 !important;
 }
 
 .label {
