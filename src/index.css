@@ -5,6 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
+  background-color: aliceblue;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -12,11 +13,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 a {
   font-weight: 500;
   color: #61C6E8;
   text-decoration: inherit;
 }
+
+
 /*
 a:hover {
   color: #535bf2;
