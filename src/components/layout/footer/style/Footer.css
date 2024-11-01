@@ -1,0 +1,100 @@
+/* Set body and html to occupy full height */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Ensure root container (e.g., #root) is a flex container */
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Minimum height of 100% of the viewport height */
+}
+
+/* Main content area (if you have one) */
+.main-content {
+    flex: 1; /* This will allow the main content to take the available space */
+}
+
+/* Footer Container */
+.footer-container {
+    background-color: #4a9cb4;
+    color: white;
+    padding: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Footer Content */
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+/* Footer Logo Section */
+.footer-logo-section {
+    flex: 1;
+}
+
+.footer-logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+/* Footer Sections */
+.footer-section {
+    flex: 1;
+    min-width: 150px;
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.footer-section li:hover {
+    text-decoration: underline;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .footer-logo-section {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+}

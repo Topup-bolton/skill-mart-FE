@@ -1,0 +1,68 @@
+.service-provider-list-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.filter-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-select {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.service-providers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.provider-card {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.provider-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.position-text {
+    font-size: 14px;
+    color: gray;
+}
+
+.rating-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.contact-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.pagination-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+.provider-modal-content {
+    text-align: center;
+}
+
+.provider-modal-content .contact-section p {
+    margin: 0;
+    padding: 4px 0;
+}
