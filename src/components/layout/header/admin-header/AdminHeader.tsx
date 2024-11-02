@@ -1,7 +1,8 @@
 import React from 'react';
 import { Layout, Menu, Avatar, Typography, Dropdown } from 'antd';
 import { UserOutlined, DownOutlined } from '@ant-design/icons';
-import './AdminHeader.css';
+import Logo from '../../../../assets/skill-mart-logo.png'
+import './style/AdminHeader.css';
 
 const { Header } = Layout;
 const { Text } = Typography;
@@ -18,16 +19,16 @@ const AdminHeader: React.FC = () => {
     );
 
     return (
-        <Header className="admin-header">
+        <div className="admin-header">
             <div className="logo">
-                <Text className="logo-text">SkillMart</Text>
-                <Text className="logo-subtext">Admin Panel</Text>
+                <img src={Logo} alt="Logo" className="logo-text" />
+                {/* <Text className="logo-text">SkillMart</Text>
+                <Text className="logo-subtext">Admin Panel</Text> */}
             </div>
 
-            <Menu theme="light" mode="horizontal" defaultSelectedKeys={['1']} className="header-menu">
+            <Menu theme="light" mode="horizontal"  className="header-menu">
                 <Menu.Item key="1">Dashboard</Menu.Item>
-                <Menu.Item key="2">User Management</Menu.Item>
-                <Menu.Item key="3">Forms</Menu.Item>
+                <Menu.Item key="2"> Labor Management</Menu.Item>
                 <Menu.Item key="4">Reports</Menu.Item>
             </Menu>
 
@@ -35,11 +36,11 @@ const AdminHeader: React.FC = () => {
                 <Avatar size="large" icon={<UserOutlined />} />
                 <Dropdown overlay={menu} trigger={['click']}>
                     <Text className="username" onClick={(e) => e.preventDefault()}>
-                        AdminUser <DownOutlined />
+                        Administrator <DownOutlined />
                     </Text>
                 </Dropdown>
             </div>
-        </Header>
+        </div>
     );
 };
 
