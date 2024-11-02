@@ -9,6 +9,7 @@ import HomePage from './pages/home/HomePage'
 import Laborer from './pages/laborer/Laborer'
 import About from './pages/about/About';
 import AdminHeader from './components/layout/header/admin-header/AdminHeader';
+import AdminDashboard from './pages/admin-dashboard/AdminDashboard';
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
         <Route path='/about' element={<LoginForm />} />
         
     </Routes> */}
-<AdminHeader/>    
+<AdminDashboard/>    
     </BrowserRouter>
     
   )
