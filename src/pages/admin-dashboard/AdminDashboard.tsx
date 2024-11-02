@@ -45,7 +45,11 @@ function AdminDashboard() {
                     </Row>
                 </Col>
                 <Col span={12}>
-                    <Card title="Working Area" style={{ width: 480, marginLeft: '50px', boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px' }}>
+                    <Card title="Working Area" style={{
+                        width: 480,
+                        marginLeft: '50px',
+                        boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px'
+                    }}>
                         <ResponsiveContainer width="100%" height={195}>
                             <PieChart>
                                 <Pie
@@ -70,7 +74,7 @@ function AdminDashboard() {
             </Row>
             <h3>Ratings and Reviews</h3>
             <Row gutter={[16, 16]}>
-                
+
                 <Col span={4}>
                     <AdminLabels name='Total Reviews' count={10} />
                 </Col>
@@ -95,7 +99,7 @@ function AdminDashboard() {
                 <Col span={4}>
                     <AdminLabels name='1 start Ratings' count={10} />
                 </Col>
-                
+
             </Row>
         </div>
 
