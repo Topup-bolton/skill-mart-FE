@@ -1,9 +1,33 @@
 .admin-header {
-    display: flex;
+    /* display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
     height: 64px;
+    padding: 0px 0px 0 0px;
+    position: fixed; */
+        /* Fix the header at the top */
+        /* top: 0; */
+        /* Position it at the top */
+        /* Align to the left */
+        /* Align to the right */
+
+        display: flex;
+            align-items: center;
+            justify-content: space-between;
+    padding: 30px 80px 0 40px;            background-color: white;
+            border-bottom: 1px solid #e0e0e0;
+            font-family: Arial, sans-serif;
+            position: fixed;
+            /* Fix the header at the top */
+            top: 0;
+            /* Position it at the top */
+            left: 0;
+            /* Align to the left */
+            right: 0;
+            /* Align to the right */
+            z-index: 1000;
+            /* Set 
 }
 
 .logo {

@@ -14,9 +14,9 @@ const data = [
 
 const COLORS = ['#8884d8', '#82ca9d', '#8dd1e1', '#a4de6c', '#d0ed57'];
 
-function AdminDashboard() {
+const AdminDashboard = () => {
     return (
-        <div>
+        <div style={{padding:"0 80px 0 80px",marginTop:"70px"}}>
             <AdminHeader />
             <Row gutter={16}>
                 <Col span={12}>

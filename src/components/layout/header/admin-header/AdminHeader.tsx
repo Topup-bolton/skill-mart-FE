@@ -21,14 +21,14 @@ const AdminHeader: React.FC = () => {
     return (
         <div className="admin-header">
             <div className="logo">
-                <img src={Logo} alt="Logo" className="logo-text" />
+                <a href='/'><img src={Logo} alt="Logo" className="logo-text" /></a>
                 {/* <Text className="logo-text">SkillMart</Text>
                 <Text className="logo-subtext">Admin Panel</Text> */}
             </div>
 
             <Menu theme="light" mode="horizontal"  className="header-menu">
-                <Menu.Item key="1">Dashboard</Menu.Item>
-                <Menu.Item key="2"> Labor Management</Menu.Item>
+                <a href='/admin-dashboard'  key="1">Dashboard</a>
+                <a href='/laborer-manegemnt' key="2"> Labor Management</a>
                 <Menu.Item key="4">Reports</Menu.Item>
             </Menu>
 
