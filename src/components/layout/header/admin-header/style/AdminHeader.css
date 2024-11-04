@@ -2,8 +2,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff;
-    height: 64px;
+    padding: 30px 100px 0 80px;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    font-family: Arial, sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -12,7 +19,7 @@
 }
 
 .logo-text {
-  width:120px;
+    width: 120px;
 }
 
 .logo-subtext {
@@ -21,7 +28,6 @@
 }
 
 .header-menu {
-    /* flex: 1; */
     margin-left: 40px;
     margin-top: -10px;
     border-bottom: none;
