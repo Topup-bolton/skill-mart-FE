@@ -38,34 +38,29 @@ export const laborerManagementTableColunms = (
             render: (text, record) => {
                 return (
                     <div className="option-button-div">
-                        <Tooltip placement="topLeft" title={"Update"}>
+                        <Tooltip placement="topLeft">
                             {" "}
                             <Button
+                                style={{ backgroundColor: "transparent", borderColor: "transparent", color:'#33C596',fontWeight:'500'}}
                                 size="small"
                                 // onClick={() => updateClick(record)}
-                                // type="default"
-                                // disabled={record.docStatus !== "DRAFT"}
-                                // icon={<EditOutlined />}
-                            >View</Button>
+                            ><u>View</u></Button>
                         </Tooltip>
-                        <Tooltip placement="topLeft" title={"Update"}>
+                        <Tooltip placement="topLeft" >
                             {" "}
                             <Button
+                                style={{ backgroundColor: "transparent", borderColor: "transparent", color: '#3D8CA7', fontWeight: '500' }}
                                 size="small"
-                                // onClick={() => viewClick(record)}
-                                type="default"
-                                icon={<EyeOutlined />}
-                            />{" "}
+                            // onClick={() => updateClick(record)}
+                            ><u>Edit</u></Button>
                         </Tooltip>
-                        <Tooltip placement="topLeft" title={"View Card Issuing Note"}>
+                        <Tooltip placement="topLeft">
                             {" "}
                             <Button
+                                style={{ backgroundColor: "transparent", borderColor: "transparent", color: '#D63C3F', fontWeight: '500' }}
                                 size="small"
-                                // onClick={() => viewRequestingNoteClick(record)}
-                                disabled={record.cardRequestingNoteId === 0}
-                                type="default"
-                                icon={<FolderViewOutlined />}
-                            />{" "}
+                            // onClick={() => updateClick(record)}
+                            ><u>Delete</u></Button>
                         </Tooltip>
                         {/* <Tooltip placement="topLeft" title={'Delete'}>
                             <Button onClick={() => deleteClick(record)}

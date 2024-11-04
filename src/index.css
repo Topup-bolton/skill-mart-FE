@@ -22,8 +22,13 @@
 
 a {
   font-weight: 500;
-  color: #61C6E8;
+  color: #7D7D7D;
   text-decoration: inherit;
+}
+
+a:hover{
+  color: #7D7D7D;
+  font-weight: 900;
 }
 
 
