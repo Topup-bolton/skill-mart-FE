@@ -24,3 +24,16 @@ export const getAllLaborers = async (): Promise<GetLaborerModel> => {
         throw apiError;
     }
 }
+
+export const deleteLaborer = async (id:number): Promise<LaborerModel> => {
+    try {
+        const apiResponse = await AxiosService.delete<LaborerModel>(
+            BackendEndpoints.DELETE_LABORER+`?id=${id}`,
+        )
+        return apiResponse.data
+    } catch (apiError: unknown) {
+        console.log("EEEEEEEEEEEEEEEEEEEEEEEEEE : ",apiError);
+        
+        throw apiError;
+    }
+}

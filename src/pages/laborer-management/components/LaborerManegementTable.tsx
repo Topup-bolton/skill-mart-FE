@@ -3,7 +3,7 @@ import { Tooltip, Button } from "antd";
 import { ColumnsType } from "antd/es/table";
 
 export const laborerManagementTableColunms = (
-    // viewClick: any,
+    onClickDelete:any,
     // updateClick: any,
     // viewRequestingNoteClick: any,
 ): ColumnsType => {
@@ -59,7 +59,7 @@ export const laborerManagementTableColunms = (
                             <Button
                                 style={{ backgroundColor: "transparent", borderColor: "transparent", color: '#D63C3F', fontWeight: '500' }}
                                 size="small"
-                            // onClick={() => updateClick(record)}
+                                onClick={() => onClickDelete(record)}
                             ><u>Delete</u></Button>
                         </Tooltip>
                         {/* <Tooltip placement="topLeft" title={'Delete'}>

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import AdminHeader from '../../components/layout/header/admin-header/AdminHeader'
-import { Button, Col, Drawer, Form, Input, notification, Row, Select, Space, Table } from 'antd'
+import { Button, Col, Drawer, Form, Input, Modal, notification, Row, Select, Space, Table } from 'antd'
 import { laborerManagementTableColunms } from './components/LaborerManegementTable';
-import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
+import { ExclamationCircleFilled, PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import TextArea from 'antd/es/input/TextArea';
-import { createNewLaborer, getAllLaborers } from '../../service/laborer-management-service';
+import { createNewLaborer, deleteLaborer, deleteWarehouse, getAllLaborers } from '../../service/laborer-management-service';
 import { GetLaborerModel, LaborerModel } from '../../models/laboror-model';
 
 const data = [
@@ -18,8 +18,10 @@ const LaborerManagement = () => {
     const [tableDataFiltered, setTableDataFiltered] = useState<
         GetLaborerModel[]
     >([]);
-
     const [formRef] = Form.useForm();
+
+    const { confirm } = Modal;
+
 
     useEffect(() => {
         getLaborers()
@@ -68,6 +70,26 @@ const LaborerManagement = () => {
         const data = await getAllLaborers()
         setTableDataFiltered(data.response);
     }
+
+    const onClickDelete = (record: LaborerModel) => {
+        confirm({
+            title: 'Delete Laborer',
+            icon: <ExclamationCircleFilled />,
+            content: 'Do you want to delete this Laborer ?',
+            async onOk() {
+                await deleteLaborer(Number(record.id!));
+                notification.open({
+                    type: "success",
+                    message: "Delete Successfully.",
+                    description: "Laborer deleted successfully."
+                });
+                getLaborers()
+            },
+            onCancel() {
+            },
+        });
+    };
+
     return (
         <div style={{ padding: "0 80px 0 80px", marginTop: "70px" }}>
             <AdminHeader />
@@ -124,7 +146,7 @@ const LaborerManagement = () => {
             <Table
                 size="small"
                 columns={laborerManagementTableColunms(
-                    // viewClick,
+                    onClickDelete
                     // updateClick,
                     // viewRequestingNoteClick,
 
