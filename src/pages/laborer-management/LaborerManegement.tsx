@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import AdminHeader from '../../components/layout/header/admin-header/AdminHeader'
-import { Button, Card, Col, Drawer, Form, Input, Row, Select, Space, Table } from 'antd'
+import { Button, Card, Col, Drawer, Form, Input, notification, Row, Select, Space, Table } from 'antd'
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import { laborerManagementTableColunms } from './components/LaborerManegementTable';
 import { PlusCircleFilled, PlusCircleOutlined, PlusOutlined, SearchOutlined, UserAddOutlined } from '@ant-design/icons';
 import TextArea from 'antd/es/input/TextArea';
+import { createNewLaboror } from '../../service/laborer-management-service';
 
 const data = [
     { laborerId: '1', laborerName: 'Laborer 1', laborerType: 'Test Type', rating: '5.0' },
@@ -15,6 +16,8 @@ const data = [
 const LaborerManagement = () => {
     const [open, setOpen] = useState(false);
 
+    const[formRef] = Form.useForm();
+
 
     const showDrawer = () => {
         setOpen(true);
@@ -22,7 +25,36 @@ const LaborerManagement = () => {
 
     const onClose = () => {
         setOpen(false);
+        formRef.resetFields();
     };
+
+    const onClickSave = async () => {
+        const reqBody = {
+            firstName: formRef.getFieldValue('firstName'),
+            lastName: formRef.getFieldValue('lastName'),
+            address: formRef.getFieldValue('address'),
+            mobile: formRef.getFieldValue('phoneNumber'),
+            links: formRef.getFieldValue('fbLink'),
+            serviceType: formRef.getFieldValue('typeOfWork'),
+            serviceArea: formRef.getFieldValue('serviceArea'),
+            remark: formRef.getFieldValue('qualifications'),
+            available:true,
+            type:"Test"
+        }
+
+        const response = await createNewLaboror(reqBody);
+
+        if (response) {
+            notification.open({
+                type: "success",
+                message: "Successfully.",
+                description:"Laboror successfully created."
+                        
+            });
+           onClose()
+        }
+
+    }
     return (
         <div style={{ padding: "0 80px 0 80px", marginTop: "70px" }}>
             <AdminHeader />
@@ -105,6 +137,7 @@ const LaborerManagement = () => {
             >
                 <Form
                     layout="vertical"
+                    form={formRef}
                     // onFinish={onFinish}
                     requiredMark={false}
                     initialValues={{
@@ -182,7 +215,7 @@ const LaborerManagement = () => {
                         <Col span={12}>
                             <Form.Item
                                 label={<span className='label'>Availability Area</span>}
-                                name="AvailabilityAria"
+                                name="serviceArea"
                                 rules={[{ required: true, message: 'Please enter your availability area' }]}
                             >
                                 <Select>
@@ -215,6 +248,7 @@ const LaborerManagement = () => {
                                 <Button
                                     className='btn'
                                     htmlType="submit"
+                                    onClick={onClickSave}
                                 >
                                     Submit
                                 </Button>
