@@ -10,23 +10,23 @@ export const laborerManagementTableColunms = (
     return [
         {
             title: "Laborer ID",
-            dataIndex: "laborerId",
+            dataIndex: "id",
             width: 100,
             sorter: (a, b) => a.id - b.id,
         },
         {
             title: "Laborer Name",
-            dataIndex: "laborerName",
+            dataIndex: "firstName" ,
             width: 250,
         },
         {
-            title: "Laborer Type",
-            dataIndex: "laborerType",
+            title: "Service Type",
+            dataIndex: "serviceType",
             width: 250,
         },
         {
             title: "Rating",
-            dataIndex: "rating",
+            dataIndex: "remark",
             width: 250,
         },
 

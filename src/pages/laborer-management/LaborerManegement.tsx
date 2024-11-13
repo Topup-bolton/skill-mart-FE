@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AdminHeader from '../../components/layout/header/admin-header/AdminHeader'
-import { Button, Card, Col, Drawer, Form, Input, notification, Row, Select, Space, Table } from 'antd'
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
+import { Button, Col, Drawer, Form, Input, notification, Row, Select, Space, Table } from 'antd'
 import { laborerManagementTableColunms } from './components/LaborerManegementTable';
-import { PlusCircleFilled, PlusCircleOutlined, PlusOutlined, SearchOutlined, UserAddOutlined } from '@ant-design/icons';
+import { PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import TextArea from 'antd/es/input/TextArea';
-import { createNewLaboror } from '../../service/laborer-management-service';
+import { createNewLaborer, getAllLaborers } from '../../service/laborer-management-service';
+import { GetLaborerModel, LaborerModel } from '../../models/laboror-model';
 
 const data = [
     { laborerId: '1', laborerName: 'Laborer 1', laborerType: 'Test Type', rating: '5.0' },
@@ -15,9 +15,16 @@ const data = [
 
 const LaborerManagement = () => {
     const [open, setOpen] = useState(false);
+    const [tableDataFiltered, setTableDataFiltered] = useState<
+        GetLaborerModel[]
+    >([]);
 
-    const[formRef] = Form.useForm();
+    const [formRef] = Form.useForm();
 
+    useEffect(() => {
+        getLaborers()
+    }, [])
+    
 
     const showDrawer = () => {
         setOpen(true);
@@ -37,28 +44,34 @@ const LaborerManagement = () => {
             links: formRef.getFieldValue('fbLink'),
             serviceType: formRef.getFieldValue('typeOfWork'),
             serviceArea: formRef.getFieldValue('serviceArea'),
-            remark: formRef.getFieldValue('qualifications'),
-            available:true,
-            type:"Test"
+            remark: "0.0",
+            // formRef.getFieldValue('qualifications'),
+            available: true,
+            type: "Test"
         }
 
-        const response = await createNewLaboror(reqBody);
+        const response = await createNewLaborer(reqBody);
 
         if (response) {
             notification.open({
                 type: "success",
                 message: "Successfully.",
-                description:"Laboror successfully created."
-                        
-            });
-           onClose()
-        }
+                description: "Laborer successfully created."
 
+            });
+            onClose()
+            getLaborers()
+        }
+    }
+
+    const getLaborers = async () => {
+        const data = await getAllLaborers()
+        setTableDataFiltered(data.response);
     }
     return (
         <div style={{ padding: "0 80px 0 80px", marginTop: "70px" }}>
             <AdminHeader />
-            <Row gutter={16} align="middle" justify="space-between" style={{marginBottom:'30px'}}>
+            <Row gutter={16} align="middle" justify="space-between" style={{ marginBottom: '30px' }}>
                 <Col>
                     <h3>Laborer Management</h3>
                 </Col>
@@ -70,19 +83,19 @@ const LaborerManagement = () => {
                         <Col>
                             <Input
                                 placeholder="Search here"
-                                style={{ 
-                                    width: 200, 
-                                    borderRadius: '30px' 
+                                style={{
+                                    width: 200,
+                                    borderRadius: '30px'
                                 }}
                             />
                         </Col>
                         <Col>
                             <Button
-                                style={{ 
-                                    backgroundColor: '#61C6E8', 
-                                    color: '#FFFFFF', 
-                                    border: 'none', 
-                                    borderRadius: '30px' 
+                                style={{
+                                    backgroundColor: '#61C6E8',
+                                    color: '#FFFFFF',
+                                    border: 'none',
+                                    borderRadius: '30px'
                                 }}
                                 icon={<SearchOutlined />}
                             >
@@ -117,7 +130,7 @@ const LaborerManagement = () => {
 
                 )}
                 // onChange={tableChangeHandler}
-                dataSource={data}
+                dataSource={tableDataFiltered}
                 rowKey={"id"}
             // pagination={{
             //     total: tablePagination.totalRecords,
@@ -130,7 +143,7 @@ const LaborerManagement = () => {
 
             <Drawer
                 width={600}
-                title={<span style={{ color: '#3D8CA7',fontWeight:'700' }}>Worker Registration</span>}
+                title={<span style={{ color: '#3D8CA7', fontWeight: '700' }}>Worker Registration</span>}
                 placement="right"
                 onClose={onClose}
                 open={open}
@@ -238,7 +251,7 @@ const LaborerManagement = () => {
                         </Col>
                     </Row>
                     <Form.Item>
-                        <div style={{display:'flex',justifyContent:'end'}}>
+                        <div style={{ display: 'flex', justifyContent: 'end' }}>
                             <Space>
                                 <Button
                                     className='btn'
@@ -260,7 +273,7 @@ const LaborerManagement = () => {
             </Drawer>
         </div>
 
-        
+
 
 
 

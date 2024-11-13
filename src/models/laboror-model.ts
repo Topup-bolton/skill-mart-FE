@@ -1,4 +1,5 @@
-export interface LabororModel {
+export interface LaborerModel {
+    id?:string,
     firstName:string,
     lastName:string,
     address:string,
@@ -9,4 +10,8 @@ export interface LabororModel {
     serviceType:string,
     remark:string,
     links:string
+}
+
+export interface GetLaborerModel extends LaborerModel{
+    response:[]
 }
