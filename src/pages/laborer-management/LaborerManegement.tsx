@@ -4,13 +4,8 @@ import { Button, Col, Drawer, Form, Input, Modal, notification, Row, Select, Spa
 import { laborerManagementTableColunms } from './components/LaborerManegementTable';
 import { ExclamationCircleFilled, PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import TextArea from 'antd/es/input/TextArea';
-import { createNewLaborer, deleteLaborer, deleteWarehouse, getAllLaborers, updateLaborer } from '../../service/laborer-management-service';
+import { createNewLaborer, deleteLaborer, getAllLaborers, updateLaborer } from '../../service/laborer-management-service';
 import { GetLaborerModel, LaborerModel } from '../../models/laboror-model';
-
-const data = [
-    { laborerId: '1', laborerName: 'Laborer 1', laborerType: 'Test Type', rating: '5.0' },
-
-]
 
 
 const LaborerManagement = () => {
@@ -30,8 +25,6 @@ const LaborerManagement = () => {
         getLaborers()
     }, [])
 
-
-
     const showDrawer = () => {
         setOpen(true);
     };
@@ -43,41 +36,6 @@ const LaborerManagement = () => {
         setSaveBtnText("SUBMIT")
     };
 
-    const onClickSave = async () => {
-        const reqBody = {
-            firstName: formRef.getFieldValue('firstName'),
-            lastName: formRef.getFieldValue('lastName'),
-            address: formRef.getFieldValue('address'),
-            mobile: formRef.getFieldValue('phoneNumber'),
-            links: formRef.getFieldValue('fbLink'),
-            serviceType: formRef.getFieldValue('typeOfWork'),
-            serviceArea: formRef.getFieldValue('serviceArea'),
-            remark: "0.0",
-            // formRef.getFieldValue('qualifications'),
-            available: true,
-            type: "Test"
-        }
-        let response;
-        if (saveBtnText == "SUBMIT") {
-            response = await createNewLaborer(reqBody);
-        } else {
-            response = await updateLaborer(updateObj?.id,reqBody);
-        }
-
-
-        if (response) {
-            notification.open({
-                type: "success",
-                message: "Successfully.",
-                description: saveBtnText == "SUBMIT" ? 
-                "Laborer successfully created." :
-                "Laborer successfully updated."
-            });
-            onClose()
-            getLaborers()
-            setupdateObj(undefined)
-        }
-    }
     const loadDataForFields = (record: LaborerModel) => {
         formRef.setFieldsValue({
             firstName: record.firstName,
@@ -107,6 +65,41 @@ const LaborerManagement = () => {
     const getLaborers = async () => {
         const data = await getAllLaborers()
         setTableDataFiltered(data.response);
+    }
+
+    const onClickSave = async () => {
+        const reqBody = {
+            firstName: formRef.getFieldValue('firstName'),
+            lastName: formRef.getFieldValue('lastName'),
+            address: formRef.getFieldValue('address'),
+            mobile: formRef.getFieldValue('phoneNumber'),
+            links: formRef.getFieldValue('fbLink'),
+            serviceType: formRef.getFieldValue('typeOfWork'),
+            serviceArea: formRef.getFieldValue('serviceArea'),
+            remark: "0.0",
+            // formRef.getFieldValue('qualifications'),
+            available: true,
+            type: "Test"
+        }
+        let response;
+        if (saveBtnText == "SUBMIT") {
+            response = await createNewLaborer(reqBody);
+        } else {
+            response = await updateLaborer(updateObj?.id, reqBody);
+        }
+
+        if (response) {
+            notification.open({
+                type: "success",
+                message: "Successfully.",
+                description: saveBtnText == "SUBMIT" ?
+                    "Laborer successfully created." :
+                    "Laborer successfully updated."
+            });
+            onClose()
+            getLaborers()
+            setupdateObj(undefined)
+        }
     }
 
     const onClickDelete = (record: LaborerModel) => {
@@ -187,19 +180,9 @@ const LaborerManagement = () => {
                     onClickDelete,
                     onClickView,
                     updateClick,
-                    // viewRequestingNoteClick,
-
                 )}
-                // onChange={tableChangeHandler}
                 dataSource={tableDataFiltered}
                 rowKey={"id"}
-            // pagination={{
-            //     total: tablePagination.totalRecords,
-            //     current: tablePagination.currentPage,
-            //     pageSize: tablePagination.itemPerPage,
-            //     pageSizeOptions: [10, 25, 50],
-            //     showSizeChanger: true,
-            // }}
             />
 
             <Drawer
@@ -212,7 +195,6 @@ const LaborerManagement = () => {
                 <Form
                     layout="vertical"
                     form={formRef}
-                    // onFinish={onFinish}
                     requiredMark={false}
                     initialValues={{
                         agreement: false,
