@@ -4,7 +4,7 @@ import { Button, Col, Drawer, Form, Input, Modal, notification, Row, Select, Spa
 import { laborerManagementTableColunms } from './components/LaborerManegementTable';
 import { ExclamationCircleFilled, PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import TextArea from 'antd/es/input/TextArea';
-import { createNewLaborer, deleteLaborer, deleteWarehouse, getAllLaborers } from '../../service/laborer-management-service';
+import { createNewLaborer, deleteLaborer, deleteWarehouse, getAllLaborers, updateLaborer } from '../../service/laborer-management-service';
 import { GetLaborerModel, LaborerModel } from '../../models/laboror-model';
 
 const data = [
@@ -18,6 +18,9 @@ const LaborerManagement = () => {
     const [tableDataFiltered, setTableDataFiltered] = useState<
         GetLaborerModel[]
     >([]);
+    const [viewClick, setViewClick] = useState(false)
+    const [saveBtnText, setSaveBtnText] = useState("SUBMIT")
+    const [updateObj, setupdateObj] = useState<LaborerModel | undefined>()
     const [formRef] = Form.useForm();
 
     const { confirm } = Modal;
@@ -26,7 +29,8 @@ const LaborerManagement = () => {
     useEffect(() => {
         getLaborers()
     }, [])
-    
+
+
 
     const showDrawer = () => {
         setOpen(true);
@@ -35,6 +39,8 @@ const LaborerManagement = () => {
     const onClose = () => {
         setOpen(false);
         formRef.resetFields();
+        setViewClick(false)
+        setSaveBtnText("SUBMIT")
     };
 
     const onClickSave = async () => {
@@ -51,19 +57,51 @@ const LaborerManagement = () => {
             available: true,
             type: "Test"
         }
+        let response;
+        if (saveBtnText == "SUBMIT") {
+            response = await createNewLaborer(reqBody);
+        } else {
+            response = await updateLaborer(updateObj?.id,reqBody);
+        }
 
-        const response = await createNewLaborer(reqBody);
 
         if (response) {
             notification.open({
                 type: "success",
                 message: "Successfully.",
-                description: "Laborer successfully created."
-
+                description: saveBtnText == "SUBMIT" ? 
+                "Laborer successfully created." :
+                "Laborer successfully updated."
             });
             onClose()
             getLaborers()
+            setupdateObj(undefined)
         }
+    }
+    const loadDataForFields = (record: LaborerModel) => {
+        formRef.setFieldsValue({
+            firstName: record.firstName,
+            lastName: record.lastName,
+            address: record.address,
+            phoneNumber: record.mobile,
+            fbLink: record.links,
+            typeOfWork: record.serviceType,
+            serviceArea: record.serviceArea,
+            qualifications: ''
+        });
+    }
+
+    const onClickView = (record: LaborerModel) => {
+        setViewClick(true)
+        loadDataForFields(record);
+        showDrawer();
+    }
+
+    const updateClick = (record: LaborerModel) => {
+        setupdateObj(record);
+        loadDataForFields(record);
+        setSaveBtnText("UPDATE")
+        showDrawer();
     }
 
     const getLaborers = async () => {
@@ -146,8 +184,9 @@ const LaborerManagement = () => {
             <Table
                 size="small"
                 columns={laborerManagementTableColunms(
-                    onClickDelete
-                    // updateClick,
+                    onClickDelete,
+                    onClickView,
+                    updateClick,
                     // viewRequestingNoteClick,
 
                 )}
@@ -186,8 +225,9 @@ const LaborerManagement = () => {
                                 label={<span className='label'>First Name</span>}
                                 name="firstName"
                                 rules={[{ required: true, message: 'Please enter your first name' }]}
+
                             >
-                                <Input />
+                                <Input readOnly={viewClick} />
                             </Form.Item>
 
                         </Col>
@@ -197,7 +237,7 @@ const LaborerManagement = () => {
                                 name="lastName"
                                 rules={[{ required: true, message: 'Please enter your last name' }]}
                             >
-                                <Input />
+                                <Input readOnly={viewClick} />
                             </Form.Item>
                         </Col>
 
@@ -210,7 +250,7 @@ const LaborerManagement = () => {
                                 name="address"
                                 rules={[{ required: true, message: 'Please enter your address' }]}
                             >
-                                <Input />
+                                <Input readOnly={viewClick} />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -221,7 +261,7 @@ const LaborerManagement = () => {
                                 name="phoneNumber"
                                 rules={[{ required: true, message: 'Please enter your phone number' }]}
                             >
-                                <Input addonBefore="+94" />
+                                <Input addonBefore="+94" readOnly={viewClick} />
                             </Form.Item>
                         </Col>
                         <Col span={12}>
@@ -229,7 +269,7 @@ const LaborerManagement = () => {
                                 label={<span className='label'>Facebook Profile Link(Optional) </span>}
                                 name="fbLink"
                             >
-                                <Input />
+                                <Input readOnly={viewClick} />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -240,11 +280,13 @@ const LaborerManagement = () => {
                                 name="typeOfWork"
                                 rules={[{ required: true, message: 'Please enter your work type' }]}
                             >
-                                <Select>
-                                    <Select.Option value="1">Test 1</Select.Option>
-                                    <Select.Option value="2">Test 2</Select.Option>
-
-                                </Select>
+                                {
+                                    viewClick ? (<Input readOnly />) : (
+                                        <Select>
+                                            <Select.Option value="Test 1">Test 1</Select.Option>
+                                            <Select.Option value="Test 2">Test 2</Select.Option>
+                                        </Select>)
+                                }
                             </Form.Item>
                         </Col>
                         <Col span={12}>
@@ -253,11 +295,14 @@ const LaborerManagement = () => {
                                 name="serviceArea"
                                 rules={[{ required: true, message: 'Please enter your availability area' }]}
                             >
-                                <Select>
-                                    <Select.Option value="1">Test 1</Select.Option>
-                                    <Select.Option value="2">Test 2</Select.Option>
+                                {
+                                    viewClick ? (<Input readOnly />) : (
+                                        <Select>
+                                            <Select.Option value="Test 1">Test 1</Select.Option>
+                                            <Select.Option value="Test 2">Test 2</Select.Option>
+                                        </Select>)
+                                }
 
-                                </Select>
                             </Form.Item>
                         </Col>
                     </Row>
@@ -268,7 +313,7 @@ const LaborerManagement = () => {
                                 name="qualifications"
                                 rules={[{ required: true, message: 'Please enter your qualifications' }]}
                             >
-                                <TextArea />
+                                <TextArea readOnly={viewClick} />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -278,14 +323,14 @@ const LaborerManagement = () => {
                                 <Button
                                     className='btn'
                                 >
-                                    Cancel
+                                    CANCEL
                                 </Button>
                                 <Button
                                     className='btn'
                                     htmlType="submit"
                                     onClick={onClickSave}
                                 >
-                                    Submit
+                                    {saveBtnText}
                                 </Button>
                             </Space>
 

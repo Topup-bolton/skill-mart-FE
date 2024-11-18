@@ -3,8 +3,9 @@ import { Tooltip, Button } from "antd";
 import { ColumnsType } from "antd/es/table";
 
 export const laborerManagementTableColunms = (
-    onClickDelete:any,
-    // updateClick: any,
+    onClickDelete: any,
+    onClickView: any,
+    updateClick: any,
     // viewRequestingNoteClick: any,
 ): ColumnsType => {
     return [
@@ -16,7 +17,7 @@ export const laborerManagementTableColunms = (
         },
         {
             title: "Laborer Name",
-            dataIndex: "firstName" ,
+            dataIndex: "firstName",
             width: 250,
         },
         {
@@ -41,9 +42,9 @@ export const laborerManagementTableColunms = (
                         <Tooltip placement="topLeft">
                             {" "}
                             <Button
-                                style={{ backgroundColor: "transparent", borderColor: "transparent", color:'#33C596',fontWeight:'500'}}
+                                style={{ backgroundColor: "transparent", borderColor: "transparent", color: '#33C596', fontWeight: '500' }}
                                 size="small"
-                                // onClick={() => updateClick(record)}
+                                onClick={() => onClickView(record)}
                             ><u>View</u></Button>
                         </Tooltip>
                         <Tooltip placement="topLeft" >
@@ -51,7 +52,7 @@ export const laborerManagementTableColunms = (
                             <Button
                                 style={{ backgroundColor: "transparent", borderColor: "transparent", color: '#3D8CA7', fontWeight: '500' }}
                                 size="small"
-                            // onClick={() => updateClick(record)}
+                                onClick={() => updateClick(record)}
                             ><u>Edit</u></Button>
                         </Tooltip>
                         <Tooltip placement="topLeft">
