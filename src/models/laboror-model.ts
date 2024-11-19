@@ -8,7 +8,7 @@ export interface LaborerModel {
     type:string,
     serviceArea:string,
     serviceType:string,
-    remark:string,
+    qualification:string,
     links:string
 }
 

@@ -45,7 +45,7 @@ const LaborerManagement = () => {
             fbLink: record.links,
             typeOfWork: record.serviceType,
             serviceArea: record.serviceArea,
-            qualifications: ''
+            qualifications: record.qualification
         });
     }
 
@@ -76,8 +76,7 @@ const LaborerManagement = () => {
             links: formRef.getFieldValue('fbLink'),
             serviceType: formRef.getFieldValue('typeOfWork'),
             serviceArea: formRef.getFieldValue('serviceArea'),
-            remark: "0.0",
-            // formRef.getFieldValue('qualifications'),
+            qualification: formRef.getFieldValue('qualifications'),
             available: true,
             type: "Test"
         }
