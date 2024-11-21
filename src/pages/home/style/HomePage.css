@@ -1,7 +1,7 @@
 .home-page-container {
     max-width: 1920px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0px;
     font-family: Arial, sans-serif;
 }
 
@@ -97,6 +97,6 @@
 .gear-img {
     position: absolute;
     bottom: 40px;
-    right: 20px;
+    right: 0px;
     width: 150px;
 }
