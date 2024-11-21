@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import SignupForm from './pages/sign-up/SignUpForm'
 import LoginForm from './pages/log-in/LogInForm'
@@ -19,8 +18,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path={"/signin"} element={<LoginForm/>}/>
         <Route path='/find-laborer' element={<Laborer />} />
-        <Route path='/about' element={<LoginForm />} />
+        <Route path='/about' element={ ""} />
         <Route path='/admin-dashboard' element={<AdminDashboard />} />
         <Route path='/laborer-manegemnt' element={<LaborerManagement />} />
         

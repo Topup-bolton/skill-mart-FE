@@ -109,7 +109,7 @@ const LoginForm: React.FC = () => {
 
     return (
         <>
-            <UserHeader/>
+            
             <div className='container'>
                 <img src={Logo} alt="Logo" className='logo-img' />
 
@@ -161,12 +161,10 @@ const LoginForm: React.FC = () => {
                         </div>
                     </Form.Item>
 
-                    <Text type="secondary" className='txt'>
-                        Don't have an Account? <Link className='sign-up-link'>Sign Up</Link>
-                    </Text>
+                    
                 </Form>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 };
