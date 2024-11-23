@@ -1,3 +1,4 @@
+import { DisplayErrorNotification } from './../utill/display-error-message';
 import AxiosService from "../service/axios-service.ts";
 import BackendEndpoints from "../constants/backend-endpoints";
 import { GetLaborerModel, LaborerModel } from "../models/laboror-model.ts";
@@ -10,6 +11,8 @@ export const createNewLaborer = async (reqBody: LaborerModel): Promise<LaborerMo
         )
         return apiResponse.data;
     } catch (apiError) {
+        const errorMessage =apiError.response.data.message
+        DisplayErrorNotification(errorMessage);
         throw apiError;
     }
 }
@@ -44,6 +47,17 @@ export const updateLaborer = async (id:number,requestBody:any): Promise<LaborerM
         )
         return apiResponse.data
     } catch (apiError: unknown) {
+        throw apiError;
+    }
+}
+
+export const findLaboreByName = async (name:string): Promise<GetLaborerModel> => {
+    try {
+        const apiResponse = await AxiosService.get<GetLaborerModel>(
+            BackendEndpoints.FIND_USER_BY_NAME+`?name=${name}`,
+        )
+        return apiResponse.data;
+    } catch (apiError) {
         throw apiError;
     }
 }
