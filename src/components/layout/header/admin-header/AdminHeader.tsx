@@ -3,6 +3,7 @@ import { Layout, Menu, Avatar, Typography, Dropdown } from 'antd';
 import { UserOutlined, DownOutlined } from '@ant-design/icons';
 import Logo from '../../../../assets/skill-mart-logo.png'
 import './style/AdminHeader.css';
+import SubMenu from 'antd/es/menu/SubMenu';
 
 const { Header } = Layout;
 const { Text } = Typography;
@@ -11,8 +12,9 @@ const AdminHeader: React.FC = () => {
     // Define the dropdown menu for user actions
     const menu = (
         <Menu>
-            <Menu.Item key="0">Profile</Menu.Item>
-            <Menu.Item key="1">Settings</Menu.Item>
+            <SubMenu key="settings" title="Settings">
+                <a href='/setting'><Menu.Item key="profile">Manage Work Type and Availability Area</Menu.Item></a> 
+            </SubMenu>
             <Menu.Divider />
             <Menu.Item key="3">Logout</Menu.Item>
         </Menu>
