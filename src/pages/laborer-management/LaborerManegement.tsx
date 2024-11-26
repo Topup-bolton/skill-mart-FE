@@ -121,7 +121,7 @@ const LaborerManagement = () => {
         });
     };
 
-    const onChangeSearch = (e:any) => {
+    const onChangeSearch = (e: any) => {
         setSearchValue(e.target.value);
     }
 
@@ -167,20 +167,20 @@ const LaborerManagement = () => {
 
                             </Col>
                         </Form>
-                            <Col>
-                                <Button
-                                    style={{
-                                        backgroundColor: '#61C6E8',
-                                        color: '#FFFFFF',
-                                        border: 'none',
-                                        borderRadius: '30px'
-                                    }}
-                                    icon={<SearchOutlined />}
-                                    onClick={searchLaborer}
-                                >
+                        <Col>
+                            <Button
+                                style={{
+                                    backgroundColor: '#61C6E8',
+                                    color: '#FFFFFF',
+                                    border: 'none',
+                                    borderRadius: '30px'
+                                }}
+                                icon={<SearchOutlined />}
+                                onClick={searchLaborer}
+                            >
 
-                                </Button>
-                            </Col>
+                            </Button>
+                        </Col>
                         <Col>
                             <Button
                                 style={{
@@ -196,21 +196,21 @@ const LaborerManagement = () => {
                             </Button>
                         </Col>
 
-                            <Col>
-                                <Button
+                        <Col>
+                            <Button
 
-                                    style={{
-                                        backgroundColor: '#61C6E8',
-                                        color: '#FFFFFF',
-                                        border: 'none',
-                                        borderRadius: '30px'
-                                    }}
-                                    icon={<PlusOutlined />}
-                                    onClick={showDrawer}
-                                >
-                                    Add Laborer
-                                </Button>
-                            </Col>
+                                style={{
+                                    backgroundColor: '#61C6E8',
+                                    color: '#FFFFFF',
+                                    border: 'none',
+                                    borderRadius: '30px'
+                                }}
+                                icon={<PlusOutlined />}
+                                onClick={showDrawer}
+                            >
+                                Add Laborer
+                            </Button>
+                        </Col>
                     </Row>
                 </Col>
             </Row>
