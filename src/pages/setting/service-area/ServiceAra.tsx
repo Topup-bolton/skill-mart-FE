@@ -18,12 +18,12 @@ function ServiceArea() {
 
         <Row gutter={16} align="middle" justify="space-between" style={{ marginBottom: '30px' }}>
             <Col>
-                <h3>Manage Area</h3>
+                {/* <h3>Manage Area</h3> */}
             </Col>
 
             <Col>
                 <Row gutter={8} align="middle">
-                    <Form
+                    {/* <Form
                         layout='inline'
                     //   form={searchFormRef}
                     //   onFinish={searchLaborer}
@@ -72,7 +72,7 @@ function ServiceArea() {
                         >
 
                         </Button>
-                    </Col>
+                    </Col> */}
 
                     <Col>
                         <Button
@@ -81,12 +81,13 @@ function ServiceArea() {
                                 backgroundColor: '#61C6E8',
                                 color: '#FFFFFF',
                                 border: 'none',
-                                borderRadius: '30px'
+                                borderRadius: '30px',
+                                marginBottom: '10px',
                             }}
                             icon={<PlusOutlined />}
                             onClick={showDrawer}
                         >
-                            Add Area
+                            Add Service Area
                         </Button>
                     </Col>
                 </Row>

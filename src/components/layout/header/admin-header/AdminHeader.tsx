@@ -13,7 +13,7 @@ const AdminHeader: React.FC = () => {
     const menu = (
         <Menu>
             <SubMenu key="settings" title="Settings">
-                <a href='/setting'><Menu.Item key="profile">Manage Work Type and Availability Area</Menu.Item></a> 
+                <a href='/setting'><Menu.Item key="profile">Manage Master Data</Menu.Item></a> 
             </SubMenu>
             <Menu.Divider />
             <Menu.Item key="3">Logout</Menu.Item>
