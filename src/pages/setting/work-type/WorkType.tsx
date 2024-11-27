@@ -18,12 +18,12 @@ function WorkType() {
 
         <Row gutter={16} align="middle" justify="space-between" style={{ marginBottom: '30px' }}>
             <Col>
-                <h3>Manage Type</h3>
+                {/* <h3>Manage Type</h3> */}
             </Col>
 
             <Col>
                 <Row gutter={8} align="middle">
-                    <Form
+                    {/* <Form
                         layout='inline'
                     //   form={searchFormRef}
                     //   onFinish={searchLaborer}
@@ -44,8 +44,8 @@ function WorkType() {
                             </Form.Item>
 
                         </Col>
-                    </Form>
-                    <Col>
+                    </Form> */}
+                    {/* <Col>
                         <Button
                             style={{
                                 backgroundColor: '#61C6E8',
@@ -72,7 +72,7 @@ function WorkType() {
                         >
 
                         </Button>
-                    </Col>
+                    </Col> */}
 
                     <Col>
                         <Button
@@ -81,12 +81,13 @@ function WorkType() {
                                 backgroundColor: '#61C6E8',
                                 color: '#FFFFFF',
                                 border: 'none',
-                                borderRadius: '30px'
+                                borderRadius: '30px',
+                                marginBottom: '10px'
                             }}
                             icon={<PlusOutlined />}
                             onClick={showDrawer}
                         >
-                            Add Type
+                            Add Work Type
                         </Button>
                     </Col>
                 </Row>
