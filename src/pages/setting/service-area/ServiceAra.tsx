@@ -1,18 +1,54 @@
 import { SearchOutlined, ClearOutlined, PlusOutlined } from '@ant-design/icons'
-import { Row, Col, Input, Button, Form, Table, Space, Drawer } from 'antd'
-import React, { useState } from 'react'
+import { Row, Col, Input, Button, Form, Table, Space, Drawer, notification } from 'antd'
+import React, { useEffect, useState } from 'react'
 import { serviceAreaColunms } from './components/ServiceAreaTable';
+import { createServiceArea, getAllServiceAreas } from '../../../service/service-area';
+import { ServiceAreaModel } from '../../../models/service-area';
 
 function ServiceArea() {
     const [open, setOpen] = useState(false);
+    const [tableDataFiltered, setTableDataFiltered] = useState<
+        ServiceAreaModel[]
+    >([]);
+    const [formRef] = Form.useForm()
+
+    useEffect(() => {
+        getAllServiceArea()
+    }, [])
+    
 
     const showDrawer = () => {
         setOpen(true);
+        
     };
 
     const onClose = () => {
         setOpen(false);
+        formRef.resetFields();
     };
+
+    const getAllServiceArea = async () => {
+        const data = await getAllServiceAreas()
+        setTableDataFiltered(data.response);
+    }
+
+
+    const onClickSave = async () => {
+        const serviceArea = formRef.getFieldValue('srviceArea');
+        const response = await createServiceArea(serviceArea);
+
+        if (response) {
+            notification.open({
+                type: "success",
+                message: "Successfully.",
+                description:
+                    "Service Area successfully created."
+            });
+            onClose()
+            getAllServiceArea()
+
+        }
+    }
 
     return (
 
@@ -100,7 +136,7 @@ function ServiceArea() {
                     //   onClickView,
                     //   updateClick,
                 )}
-                //   dataSource={tableDataFiltered}
+                  dataSource={tableDataFiltered}
                 rowKey={"id"}
             />
             <Drawer
@@ -112,7 +148,7 @@ function ServiceArea() {
             >
                 <Form
                     layout="vertical"
-                    //   form={formRef}
+                    form={formRef}
                     requiredMark={false}
                     initialValues={{
                         agreement: false,
@@ -144,7 +180,7 @@ function ServiceArea() {
                                 <Button
                                     className='btn'
                                     htmlType="submit"
-                                //   onClick={onClickSave}
+                                    onClick={onClickSave}
                                 >
                                     SAVE
                                 </Button>

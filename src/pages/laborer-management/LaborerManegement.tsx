@@ -6,12 +6,17 @@ import { ClearOutlined, ExclamationCircleFilled, PlusOutlined, SearchOutlined } 
 import TextArea from 'antd/es/input/TextArea';
 import { createNewLaborer, deleteLaborer, findLaboreByName, getAllLaborers, updateLaborer } from '../../service/laborer-management-service';
 import { GetLaborerModel, LaborerModel } from '../../models/laboror-model';
+import { getAllServiceAreas } from '../../service/service-area';
+import { ServiceAreaModel } from '../../models/service-area';
 
 
 const LaborerManagement = () => {
     const [open, setOpen] = useState(false);
     const [tableDataFiltered, setTableDataFiltered] = useState<
         GetLaborerModel[]
+    >([]);
+    const [serviceAreas, setServiceAreas] = useState<
+        ServiceAreaModel[]
     >([]);
     const [viewClick, setViewClick] = useState(false)
     const [saveBtnText, setSaveBtnText] = useState("SUBMIT")
@@ -25,6 +30,7 @@ const LaborerManagement = () => {
 
     useEffect(() => {
         getLaborers()
+        getAllServiceArea()
     }, [])
 
     const showDrawer = () => {
@@ -120,6 +126,11 @@ const LaborerManagement = () => {
             },
         });
     };
+
+    const getAllServiceArea = async () => {
+        const data = await getAllServiceAreas()
+        setServiceAreas(data.response);
+    }
 
     const onChangeSearch = (e: any) => {
         setSearchValue(e.target.value);
@@ -329,16 +340,11 @@ const LaborerManagement = () => {
                                 {
                                     viewClick ? (<Input readOnly />) : (
                                         <Select>
-                                            <Select.Option value="ALL ISLAND">ALL ISLAND</Select.Option>
-                                            <Select.Option value="CENTRAL PROVINCE">CENTRAL PROVINCE</Select.Option>
-                                            <Select.Option value="SOUTHERN  PROVINCE">SOUTHERN  PROVINCE</Select.Option>
-                                            <Select.Option value="WESTERN  PROVINCE">WESTERN  PROVINCE</Select.Option>
-                                            <Select.Option value="SABARAGAMUWA  PROVINCE">SABARAGAMUWA  PROVINCE</Select.Option>
-                                            <Select.Option value="EASTERN  PROVINCE">EASTERN  PROVINCE</Select.Option>
-                                            <Select.Option value="UVA  PROVINCE">UVA  PROVINCE</Select.Option>
-                                            <Select.Option value="NORTH WESTERN PROVINCE">NORTH WESTERN PROVINCE</Select.Option>
-                                            <Select.Option value="NORTH CENTRAL PROVINCE">NORTH CENTRAL PROVINCE</Select.Option>
-                                            <Select.Option value="NORTHERN  PROVINCE">NORTHERN  PROVINCE</Select.Option>
+                                            {serviceAreas?.map((service) => (
+                                                <Select.Option key={service.areaId} value={service.areaName}>
+                                                    {service.areaName}
+                                                </Select.Option>
+                                            ))}
                                         </Select>)
                                 }
 
