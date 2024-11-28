@@ -11,13 +11,13 @@ export const serviceAreaColunms = (
     return [
         {
             title: "ID",
-            dataIndex: "id",
+            dataIndex: "areaId",
             width: 100,
             sorter: (a, b) => a.id - b.id,
         },
         {
             title: "Service Area",
-            dataIndex: "serviceArea",
+            dataIndex: "areaName",
             width: 250,
         },
     ];
