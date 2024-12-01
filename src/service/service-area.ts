@@ -27,3 +27,14 @@ export const getAllServiceAreas = async (): Promise<ServiceAreaModel> => {
         throw apiError;
     }
 }
+
+export const deleteServiceArea = async (id:number): Promise<ServiceAreaModel> => {
+    try {
+        const apiResponse = await AxiosService.delete<ServiceAreaModel>(
+            BackendEndpoints.DELETE_SERVICE_AREA+`?id=${id}`,
+        )
+        return apiResponse.data
+    } catch (apiError: unknown) {
+        throw apiError;
+    }
+}

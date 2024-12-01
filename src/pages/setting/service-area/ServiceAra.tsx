@@ -1,8 +1,8 @@
-import { SearchOutlined, ClearOutlined, PlusOutlined } from '@ant-design/icons'
-import { Row, Col, Input, Button, Form, Table, Space, Drawer, notification } from 'antd'
+import { SearchOutlined, ClearOutlined, PlusOutlined, ExclamationCircleFilled } from '@ant-design/icons'
+import { Row, Col, Input, Button, Form, Table, Space, Drawer, notification, Modal } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { serviceAreaColunms } from './components/ServiceAreaTable';
-import { createServiceArea, getAllServiceAreas } from '../../../service/service-area';
+import { createServiceArea, deleteServiceArea, getAllServiceAreas } from '../../../service/service-area';
 import { ServiceAreaModel } from '../../../models/service-area';
 
 function ServiceArea() {
@@ -11,6 +11,8 @@ function ServiceArea() {
         ServiceAreaModel[]
     >([]);
     const [formRef] = Form.useForm()
+
+    const { confirm } = Modal;
 
     useEffect(() => {
         getAllServiceArea()
@@ -49,6 +51,25 @@ function ServiceArea() {
 
         }
     }
+
+    const onClickDelete = (record: ServiceAreaModel) => {
+        confirm({
+            title: 'Delete Service Area',
+            icon: <ExclamationCircleFilled />,
+            content: 'Do you want to delete this Service Area ?',
+            async onOk() {
+                await deleteServiceArea(Number(record.areaId!));
+                notification.open({
+                    type: "success",
+                    message: "Delete Successfully.",
+                    description: "Service Area deleted successfully."
+                });
+                getAllServiceArea()
+            },
+            onCancel() {
+            },
+        });
+    };
 
     return (
 
@@ -132,7 +153,7 @@ function ServiceArea() {
                 style={{ width: "100%" }}
                 size="small"
                 columns={serviceAreaColunms(
-                    //   onClickDelete,
+                      onClickDelete,
                     //   onClickView,
                     //   updateClick,
                 )}

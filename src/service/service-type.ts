@@ -28,3 +28,14 @@ export const getAllServiceTypes = async (): Promise<ServiceTypeModel> => {
         throw apiError;
     }
 }
+
+export const deleteServiceType = async (id:number): Promise<ServiceTypeModel> => {
+    try {
+        const apiResponse = await AxiosService.delete<ServiceTypeModel>(
+            BackendEndpoints.DELETE_SERVICE_TYPE+`?id=${id}`,
+        )
+        return apiResponse.data
+    } catch (apiError: unknown) {
+        throw apiError;
+    }
+}

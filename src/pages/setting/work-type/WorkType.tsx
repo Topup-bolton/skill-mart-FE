@@ -1,8 +1,8 @@
-import { SearchOutlined, ClearOutlined, PlusOutlined } from '@ant-design/icons'
-import { Row, Col, Input, Button, Form, Table, Space, Drawer, notification } from 'antd'
+import { SearchOutlined, ClearOutlined, PlusOutlined, ExclamationCircleFilled } from '@ant-design/icons'
+import { Row, Col, Input, Button, Form, Table, Space, Drawer, notification, Modal } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { workTypeTableColunms } from './components/WorkTypeTable'
-import { createServiceType, getAllServiceTypes } from '../../../service/service-type';
+import { createServiceType, deleteServiceType, getAllServiceTypes } from '../../../service/service-type';
 import { ServiceTypeModel } from '../../../models/service-type';
 
 function WorkType() {
@@ -12,6 +12,8 @@ function WorkType() {
     >([]);
 
     const [formRef] = Form.useForm()
+
+    const { confirm } = Modal;
 
     useEffect(() => {
         getAllServiceType()
@@ -47,6 +49,25 @@ function WorkType() {
 
         }
     }
+
+    const onClickDelete = (record: ServiceTypeModel) => {
+        confirm({
+            title: 'Delete Service Type',
+            icon: <ExclamationCircleFilled />,
+            content: 'Do you want to delete this Service Type ?',
+            async onOk() {
+                await deleteServiceType(Number(record.typeId!));
+                notification.open({
+                    type: "success",
+                    message: "Delete Successfully.",
+                    description: "Service Type deleted successfully."
+                });
+                getAllServiceType()
+            },
+            onCancel() {
+            },
+        });
+    };
 
     return (
 
@@ -130,7 +151,7 @@ function WorkType() {
                 style={{ width: "100%" }}
                 size="small"
                 columns={workTypeTableColunms(
-                    //   onClickDelete,
+                      onClickDelete,
                     //   onClickView,
                     //   updateClick,
                 )}
