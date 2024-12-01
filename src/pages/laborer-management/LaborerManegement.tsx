@@ -333,7 +333,7 @@ const LaborerManagement = () => {
                                     viewClick ? (<Input readOnly />) : (
                                         <Select>
                                             {serviceTypes?.map((service) => (
-                                                <Select.Option key={service.typeId} value={service.typeId}>
+                                                <Select.Option key={service.typeId} value={service.type}>
                                                     {service.type}
                                                 </Select.Option>
                                             ))}
