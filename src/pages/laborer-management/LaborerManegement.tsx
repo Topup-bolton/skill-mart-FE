@@ -8,6 +8,8 @@ import { createNewLaborer, deleteLaborer, findLaboreByName, getAllLaborers, upda
 import { GetLaborerModel, LaborerModel } from '../../models/laboror-model';
 import { getAllServiceAreas } from '../../service/service-area';
 import { ServiceAreaModel } from '../../models/service-area';
+import { getAllServiceTypes } from '../../service/service-type';
+import { ServiceTypeModel } from '../../models/service-type';
 
 
 const LaborerManagement = () => {
@@ -17,6 +19,9 @@ const LaborerManagement = () => {
     >([]);
     const [serviceAreas, setServiceAreas] = useState<
         ServiceAreaModel[]
+    >([]);
+    const [serviceTypes, setServiceTypes] = useState<
+        ServiceTypeModel[]
     >([]);
     const [viewClick, setViewClick] = useState(false)
     const [saveBtnText, setSaveBtnText] = useState("SUBMIT")
@@ -31,6 +36,7 @@ const LaborerManagement = () => {
     useEffect(() => {
         getLaborers()
         getAllServiceArea()
+        getAllServiceType()
     }, [])
 
     const showDrawer = () => {
@@ -130,6 +136,11 @@ const LaborerManagement = () => {
     const getAllServiceArea = async () => {
         const data = await getAllServiceAreas()
         setServiceAreas(data.response);
+    }
+
+    const getAllServiceType = async () => {
+        const data = await getAllServiceTypes()
+        setServiceTypes(data.response);
     }
 
     const onChangeSearch = (e: any) => {
@@ -321,12 +332,11 @@ const LaborerManagement = () => {
                                 {
                                     viewClick ? (<Input readOnly />) : (
                                         <Select>
-                                            <Select.Option value="PLUMBER">PLUMBER</Select.Option>
-                                            <Select.Option value="CARPENTER">CARPENTER</Select.Option>
-                                            <Select.Option value="MECHANIC">MECHANIC</Select.Option>
-                                            <Select.Option value="ELECTRICIAN">ELECTRICIAN</Select.Option>
-                                            <Select.Option value="MASON">MASON</Select.Option>
-                                            <Select.Option value="PAINTER">PAINTER</Select.Option>
+                                            {serviceTypes?.map((service) => (
+                                                <Select.Option key={service.typeId} value={service.typeId}>
+                                                    {service.type}
+                                                </Select.Option>
+                                            ))}
                                         </Select>)
                                 }
                             </Form.Item>
