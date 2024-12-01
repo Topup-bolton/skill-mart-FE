@@ -11,13 +11,13 @@ export const workTypeTableColunms = (
     return [
         {
             title: "ID",
-            dataIndex: "id",
+            dataIndex: "typeId",
             width: 100,
             sorter: (a, b) => a.id - b.id,
         },
         {
             title: "Work Type",
-            dataIndex: "firstName",
+            dataIndex: "type",
             width: 250,
         },
     ];

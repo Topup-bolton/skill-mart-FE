@@ -10,6 +10,10 @@ const BackendEndpoints = {
     ADD_NEW_SERVICE_AREA:"api/v1/serviceArea/addServiceArea",
     GET_ALL_SERVICE_AREAS:"api/v1/serviceArea/findAllServiceArea",
 
+    //service type
+     ADD_NEW_SERVICE_TYPE:"api/v1/serviceType/addServiceType",
+     GET_ALL_SERVICE_TYPES:"api/v1/serviceType/findAllServiceType",
+
 } 
 
 export default BackendEndpoints;

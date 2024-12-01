@@ -1,10 +1,22 @@
 import { SearchOutlined, ClearOutlined, PlusOutlined } from '@ant-design/icons'
-import { Row, Col, Input, Button, Form, Table, Space, Drawer } from 'antd'
-import React, { useState } from 'react'
+import { Row, Col, Input, Button, Form, Table, Space, Drawer, notification } from 'antd'
+import React, { useEffect, useState } from 'react'
 import { workTypeTableColunms } from './components/WorkTypeTable'
+import { createServiceType, getAllServiceTypes } from '../../../service/service-type';
+import { ServiceTypeModel } from '../../../models/service-type';
 
 function WorkType() {
     const [open, setOpen] = useState(false);
+    const [tableDataFiltered, setTableDataFiltered] = useState<
+        ServiceTypeModel[]
+    >([]);
+
+    const [formRef] = Form.useForm()
+
+    useEffect(() => {
+        getAllServiceType()
+    }, [])
+
 
     const showDrawer = () => {
         setOpen(true);
@@ -13,6 +25,28 @@ function WorkType() {
     const onClose = () => {
         setOpen(false);
     };
+
+    const getAllServiceType = async () => {
+        const data = await getAllServiceTypes()
+        setTableDataFiltered(data.response);
+    }
+
+    const onClickSave = async () => {
+        const serviceType = formRef.getFieldValue('workType');
+        const response = await createServiceType(serviceType);
+
+        if (response) {
+            notification.open({
+                type: "success",
+                message: "Successfully.",
+                description:
+                    "Service Type successfully created."
+            });
+            onClose()
+            getAllServiceType()
+
+        }
+    }
 
     return (
 
@@ -100,7 +134,7 @@ function WorkType() {
                     //   onClickView,
                     //   updateClick,
                 )}
-                //   dataSource={tableDataFiltered}
+                dataSource={tableDataFiltered}
                 rowKey={"id"}
             />
             <Drawer
@@ -109,10 +143,11 @@ function WorkType() {
                 placement="right"
                 onClose={onClose}
                 open={open}
+
             >
                 <Form
                     layout="vertical"
-                    //   form={formRef}
+                    form={formRef}
                     requiredMark={false}
                     initialValues={{
                         agreement: false,
@@ -144,7 +179,7 @@ function WorkType() {
                                 <Button
                                     className='btn'
                                     htmlType="submit"
-                                //   onClick={onClickSave}
+                                    onClick={onClickSave}
                                 >
                                     SAVE
                                 </Button>
