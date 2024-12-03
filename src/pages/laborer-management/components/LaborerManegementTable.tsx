@@ -26,8 +26,8 @@ export const laborerManagementTableColunms = (
             width: 250,
         },
         {
-            title: "Rating",
-            dataIndex: "remark",
+            title: "Qualifications",
+            dataIndex: "qualification",
             width: 250,
         },
 
@@ -63,13 +63,6 @@ export const laborerManagementTableColunms = (
                                 onClick={() => onClickDelete(record)}
                             ><u>Delete</u></Button>
                         </Tooltip>
-                        {/* <Tooltip placement="topLeft" title={'Delete'}>
-                            <Button onClick={() => deleteClick(record)}
-                                size="small"
-                                icon={<DeleteOutlined />}
-                                danger />
-                        </Tooltip> */}
-
                     </div>
                 );
             },
