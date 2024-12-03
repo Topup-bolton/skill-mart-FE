@@ -51,10 +51,10 @@ export const updateLaborer = async (id:number,requestBody:any): Promise<LaborerM
     }
 }
 
-export const findLaboreByName = async (name:string): Promise<GetLaborerModel> => {
+export const findLaboreByServiceArea = async (name:string): Promise<GetLaborerModel> => {
     try {
         const apiResponse = await AxiosService.get<GetLaborerModel>(
-            BackendEndpoints.FIND_USER_BY_NAME+`?name=${name}`,
+            BackendEndpoints.FIND_USER_BY_SERVICE_TYPE+`?serviceType=${name}`,
         )
         return apiResponse.data;
     } catch (apiError) {

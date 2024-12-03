@@ -4,7 +4,7 @@ import { Button, Col, Drawer, Form, Input, Modal, notification, Row, Select, Spa
 import { laborerManagementTableColunms } from './components/LaborerManegementTable';
 import { ClearOutlined, ExclamationCircleFilled, PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import TextArea from 'antd/es/input/TextArea';
-import { createNewLaborer, deleteLaborer, findLaboreByName, getAllLaborers, updateLaborer } from '../../service/laborer-management-service';
+import { createNewLaborer, deleteLaborer, findLaboreByName, findLaboreByServiceArea, getAllLaborers, updateLaborer } from '../../service/laborer-management-service';
 import { GetLaborerModel, LaborerModel } from '../../models/laboror-model';
 import { getAllServiceAreas } from '../../service/service-area';
 import { ServiceAreaModel } from '../../models/service-area';
@@ -148,7 +148,7 @@ const LaborerManagement = () => {
     }
 
     const searchLaborer = async () => {
-        const data = await findLaboreByName(searchValue)
+        const data = await findLaboreByServiceArea(searchValue)
         setTableDataFiltered(data.response);
     }
 
