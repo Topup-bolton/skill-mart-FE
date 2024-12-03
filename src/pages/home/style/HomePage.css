@@ -6,7 +6,7 @@
 }
 
 .header-section {
-    background-color: #f0f2f5;
+    background-color: #ffffff;
     padding: 50px 0;
     text-align: center;
 }
@@ -19,7 +19,7 @@
     color: #007acc; /* Customize as needed */
 }
 
-.search-bar-container {
+/* .search-bar-container {
     margin-top: 20px;
     display: flex;
     justify-content: center;
@@ -28,19 +28,14 @@
 .search-bar {
     width: 60%;
     margin-right: 10px;
-}
-
-.search-button {
-    background-color: #007acc;
-    color: white;
-}
+} */
 
 .header-image .hero-image {
     width: 100%;
     max-width: 400px;
     height: auto;
 }
-
+/* 
 .services-section {
     padding: 40px 0;
     text-align: center;
@@ -57,7 +52,7 @@
 .service-card .anticon {
     margin-bottom: 10px;
     color: #007acc;
-}
+} */
 
 .service-providers-section {
     padding: 40px 0;
@@ -95,8 +90,7 @@
 }
 
 .gear-img {
-    position: absolute;
-    bottom: 40px;
+    position: relative;
     right: 0px;
     width: 150px;
 }

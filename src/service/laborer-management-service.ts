@@ -47,3 +47,5 @@ export const updateLaborer = async (id:number,requestBody:any): Promise<LaborerM
         throw apiError;
     }
 }
+
+

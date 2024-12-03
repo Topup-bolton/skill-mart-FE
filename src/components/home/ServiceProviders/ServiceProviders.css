@@ -1,0 +1,80 @@
+/* .service-providers-section {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.provider-card {
+    text-align: center;
+    border-radius: 10px;
+}
+
+.provider-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.provider-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.provider-service {
+    font-size: 14px;
+    color: #666;
+} */
+
+
+
+.serviceProvidersSection {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.providerCard {
+    text-align: center;
+    border-radius: 10px;
+}
+
+.providerImage {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.providerName {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.providerService {
+    font-size: 14px;
+    color: #666;
+}
+
+.providers-title-1{
+    font-size: 2rem;
+    color: black;
+    font-weight: bold;
+}
+.services-providers-underline {
+    width: 90px;
+    height: 3px;
+    background-color: #00aaff;
+    margin-top: 5px;
+    position: relative;
+    left: 140px;
+    
+}
+
+.highlighted{
+    color: black;
+    position: relative;
+    align-self: start;
+    align-items:self-start ;
+    align-content: flex-start;
+}
