@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding: 0px;
     font-family: Arial, sans-serif;
+    overflow-y: hidden ;
 }
 
 .header-section {
@@ -32,7 +33,7 @@
 
 .header-image .hero-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 370px;
     height: auto;
 }
 /* 
@@ -89,8 +90,3 @@
     margin-right: 10px;
 }
 
-.gear-img {
-    position: relative;
-    right: 0px;
-    width: 150px;
-}

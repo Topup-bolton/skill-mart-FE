@@ -20,11 +20,11 @@ const UserHeader: React.FC = () => {
             </div>
 
             <div className="header-search">
-                <Input 
+                {/* <Input 
                     placeholder="Search here" 
                     suffix={<SearchOutlined />} 
                     className="search-input"
-                />
+                /> */}
             </div>
         </div>
     );

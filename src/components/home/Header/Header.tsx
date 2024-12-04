@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Typography, Input, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import './Header.css';
 import heroImage from '../../../assets/home-hero-image.png';
-
+import { useNavigate } from "react-router-dom";
+import { createNewLaborer, deleteLaborer, findLaboreByName, getAllLaborers, updateLaborer } from '../../../service/laborer-management-service';
 const { Title, Text } = Typography;
 
 const Header: React.FC = () => {
+    const [searchValue, setSearchValue] = useState("");
+    const navigate = useNavigate();
+
+    const searchLaborer = async () => {
+        // const data = await findLaboreByName(searchValue)
+        navigate("/find-laborer"
+            , { state: { search: searchValue } }
+        );
+
+
+        // setTableDataFiltered(data.response);
+    }
+
+
+
+
+
+
+
+
+
     return (
         <section className="header-section">
             <div className="header-background-ring"></div>
@@ -14,20 +36,22 @@ const Header: React.FC = () => {
                 {/* Text Section */}
                 <Col span={12} className="header-content">
                     <Title level={2} className="header-title">
-                         Find the Perfect Match 
-                        <h2>and <span className="highlighted">Get-It-Done</span></h2>
+                        Find the Perfect Match <br />
+                        <span>and<span className="highlighted">  Get-It-Done</span></span>
                     </Title>
                     <Text className="header-subtitle">
-                        Perfect way to find people to do your jobs. Easy Work - Any Time - Any Place
+                        Perfect way to find people to do your jobs. Any Work - Any Time - Any Where
                     </Text>
                     <div className="search-bar-container">
                         <Input
                             placeholder="Job Title or Key Word"
                             //prefix={}
                             className="search-bar"
+                            onChange={(e) => setSearchValue(e.target.value)} // Update state
+                            onPressEnter={searchLaborer}
                         />
-                        <Button  className="search-button">
-                        <SearchOutlined />
+                        <Button onClick={searchLaborer} className="search-button">
+                            <SearchOutlined />
                         </Button>
                     </div>
                 </Col>

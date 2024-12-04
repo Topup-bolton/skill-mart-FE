@@ -102,3 +102,9 @@
   font-size: 16px;
   color: #333;
 }
+.gear-img {
+  position: relative;
+  left: 26.7vw;
+  width: 130px;
+
+}

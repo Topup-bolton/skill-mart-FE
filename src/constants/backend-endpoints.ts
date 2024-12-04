@@ -5,6 +5,7 @@ const BackendEndpoints = {
     DELETE_LABORER: "api/v1/user/removeUserById",
     UPDATE_LABORER:"api/v1/user/alterUserById",
     FIND_USER_BY_NAME: "api/v1/user/findAllActiveLikeByFirstNameOrLastName",
+    
 
     //service area
     ADD_NEW_SERVICE_AREA:"api/v1/serviceArea/addServiceArea",
@@ -15,8 +16,10 @@ const BackendEndpoints = {
     //service type
      ADD_NEW_SERVICE_TYPE:"api/v1/serviceType/addServiceType",
      GET_ALL_SERVICE_TYPES:"api/v1/serviceType/findAllServiceType",
-     DELETE_SERVICE_TYPE: "api/v1/serviceType/removeServiceTypeById",
-
+    DELETE_SERVICE_TYPE: "api/v1/serviceType/removeServiceTypeById",
+     
+    // rate
+    GET_ALL_USER_BY_RATE:"api/v1/rate/findUserOrderByRateStarCount",
 } 
 
 export default BackendEndpoints;

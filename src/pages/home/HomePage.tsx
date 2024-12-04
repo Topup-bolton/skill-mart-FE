@@ -133,7 +133,8 @@ import ServiceProviders from '../../components/home/ServiceProviders/ServiceProv
 import Benefits from '../../components/home/Benifits/Benifits';
 // import Footer from '../../components/Footer/Footer';
 import './style/HomePage.css';
-import gearImage from '../../assets/gear.png';
+
+import gearImageLeft from "../../assets/gear-left.png"
 import UserHeader from '../../components/layout/header/user-header/UserHeader';
 import Footer from '../../components/layout/footer/Footer';
 
@@ -145,8 +146,9 @@ const HomePage: React.FC = () => {
             <Header />
             <div className="home-page-container">
                 <Services />
-                <img src={gearImage} alt="Settings" className="gear-img" />
+                <img src={gearImageLeft} alt="leftGear" />
                 <ServiceProviders />
+                
                 <Benefits />
             </div>
             <Footer/>
