@@ -52,21 +52,23 @@ import { Row, Col, Typography } from 'antd';
 import { UserOutlined, SolutionOutlined, TeamOutlined } from '@ant-design/icons';
 import './Benifits.css';
 import { MdDraw } from "react-icons/md";
+import gearImage from '../../../assets/gear.png';
 
 const { Title, Text } = Typography;
 
 const Benefits: React.FC = () => {
     return (
         <section className="benefitsSection">
+            
             <Row gutter={[16, 16]} justify="center" className="benefitsRow">
-                <Col span={8}>
+                <Col span={8} className='benifitsName'>
                     <Title level={3} className="benefitsTitle">
                         Be Smart to Use 
                     </Title>
                     <span className="benefitsTitle">SkillMart</span>
                     <div className="services-underline"></div>
                 </Col>
-                <Col span={16}>
+                <Col span={15}>
                     <Row className="benefitItem">
                         <MdDraw className="benefitIcon" />
                         <div>
@@ -88,6 +90,9 @@ const Benefits: React.FC = () => {
                             <Text className="benefitText">Search, select, and contact the best service providers for your works.</Text>
                         </div>
                     </Row>
+                </Col>
+                <Col span={1}>
+                <img src={gearImage} alt="Settings" className="gear-img" />
                 </Col>
             </Row>
         </section>

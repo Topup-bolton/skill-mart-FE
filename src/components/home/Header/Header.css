@@ -1,15 +1,15 @@
 /* Header Section Styling */
 .header-section {
   position: relative;
-  padding: 60px 20px;
+  padding: 0px 20px;
   background-color: #00aaff;
+  margin-left: 140px;
 }
 
 .header-background-ring {
   position: absolute;
   top: 43px;
   right: 100px;
-
   width: 300px;
   height: 300px;
   background: transparent;
@@ -30,29 +30,33 @@
 }
 
 .header-title {
-  font-size: 36px;
-  font-weight: bold;
+  font-size: 86px;
+  font-weight: bolder;
   color: #000;
-  line-height: 1.4;
+  /* line-height: 1.4; */
+  text-align: left;
 }
 
-.highlighted {
-  color: #00aaff;
-}
+/* .highlighted {
+  color: #269dd8;
+  font-weight: bolder;
+  font-size: 400px;
+} */
 
 .header-subtitle {
   font-size: 16px;
   color: #555;
   margin-bottom: 20px;
   display: block;
+  text-align: start;
 }
 
 .search-bar-container {
   margin-top: 20px;
   display: flex;
-  /* gap: 10px; */
   background: #f4f4f4;
   border-radius: 10px;
+  max-width:40dvw;
 }
 
 .search-bar {
@@ -60,7 +64,6 @@
   border-radius: 5px;
   padding: 10px;
   margin: 0px;
-  /* background: #8a888836; */
   background: #f4f4f4;
 }
 

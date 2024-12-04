@@ -61,3 +61,14 @@ export const findLaboreByName = async (name:string): Promise<GetLaborerModel> =>
         throw apiError;
     }
 }
+
+export const getAllLaborersByRating = async (): Promise<GetLaborerModel> => {
+    try {
+        const apiResponse = await AxiosService.get<GetLaborerModel>(
+            BackendEndpoints.GET_ALL_USER_BY_RATE,
+        )
+        return apiResponse.data;
+    } catch (apiError) {
+        throw apiError;
+    }
+}

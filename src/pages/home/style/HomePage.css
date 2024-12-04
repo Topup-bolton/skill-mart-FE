@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding: 0px;
     font-family: Arial, sans-serif;
+    overflow-y: hidden ;
 }
 
 .header-section {
@@ -15,44 +16,18 @@
     text-align: center;
 }
 
-.highlighted {
-    color: #007acc; /* Customize as needed */
-}
+ .highlighted {
+    color: #269dd8;
+  font-weight: bold;
+   font-size: 40px; 
+} 
 
-/* .search-bar-container {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.search-bar {
-    width: 60%;
-    margin-right: 10px;
-} */
 
 .header-image .hero-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 370px;
     height: auto;
 }
-/* 
-.services-section {
-    padding: 40px 0;
-    text-align: center;
-}
-
-.service-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2em;
-}
-
-.service-card .anticon {
-    margin-bottom: 10px;
-    color: #007acc;
-} */
 
 .service-providers-section {
     padding: 40px 0;
@@ -89,8 +64,3 @@
     margin-right: 10px;
 }
 
-.gear-img {
-    position: relative;
-    right: 0px;
-    width: 150px;
-}
