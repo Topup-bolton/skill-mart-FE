@@ -5,12 +5,14 @@ import './style/Laborer.css';
 import UserHeader from '../../components/layout/header/user-header/UserHeader';
 import Footer from '../../components/layout/footer/Footer';
 import { useLocation } from "react-router-dom";
-import { getAllLaborers } from '../../service/laborer-management-service';
+import { findLaboreByName, getAllLaborers } from '../../service/laborer-management-service';
 
 import worker1 from "../../assets/workers/download (1).jpg";
 import worker2 from "../../assets/workers/download.jpg";
 import worker3 from "../../assets/workers/images (1).jpg";
 import worker4 from "../../assets/workers/images.jpg";
+import { getAllServiceAreas } from '../../service/service-area';
+import { getAllServiceTypes } from '../../service/service-type';
 
 
 const { Title, Text, Link } = Typography;
@@ -29,27 +31,25 @@ interface Laborer {
     serviceType: string;
 }
 
-// const serviceProviders: Laborer[] = [
-//     {
-//         name: 'John Doe',
-//         position: 'Plumber',
-//         rating: 4.5,
-//         reviews: 120,
-//         phone: '077 822 041',
-//         website: 'https://www.facebook.com',
-//         imageUrl: '/path/to/image.jpg',
-//         description: 'Experienced plumber with over 10 years in the field. Provides quality service...',
+interface Category {
+    typeId: number;
+    type: string;
+}
+interface Area {
+    areaId: number;
+    areaName: string;
+}
 
-//     },
-
-//     // Add more providers as needed
-// ];
 
 const Laborer: React.FC = () => {
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [selectedProvider, setSelectedProvider] = useState<Laborer | null>(null);
     const [serviceProviders, setServiceProviders] = useState<Laborer[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const [areas, setAreas] = useState<Area[]>([]);
+    const [selectedArea, setSelectedArea] = useState<string | null>(null);
     const images = [worker1, worker2, worker3, worker4];
 
     const location = useLocation();
@@ -60,9 +60,17 @@ const Laborer: React.FC = () => {
     console.log('====================================');
 
     useEffect(() => {
-        
+        const searchLaborer = async () => {
+            const data = await findLaboreByName(search)
 
-    },[search])
+            console.log('===============  searched dta =====================');
+            console.log(data.response);
+            console.log('====================================');
+            setServiceProviders(data.response);
+        }
+        searchLaborer();
+
+    }, [search])
 
     useEffect(() => {
         // Fetch laborers and update the state
@@ -79,6 +87,37 @@ const Laborer: React.FC = () => {
         fetchLaborers();
     }, []);
 
+    useEffect(() => {
+        getAllCategoryType();
+    }, []);
+
+    useEffect(() => {
+        getAllServiceArea();
+    }, []);
+
+    const getAllServiceArea = async () => {
+        const data = await getAllServiceAreas();
+        setAreas(data.response);
+    }
+
+    const getAllCategoryType = async () => {
+        const data = await getAllServiceTypes();
+        setCategories(data.response);
+    }
+
+
+    const handleCategoryChange = (value: string) => {
+        setSelectedCategory(value);
+        console.log('Selected Category:', value);
+    };
+
+    const handleAreaChange = (value: string) => {
+        setSelectedArea(value);
+        console.log("Selected Area:", value);
+    };
+
+
+
 
 
     const showModal = (provider: Laborer) => {
@@ -90,7 +129,6 @@ const Laborer: React.FC = () => {
         setIsModalVisible(false);
         setSelectedProvider(null);
     };
-
     return (
         <>
             <UserHeader />
@@ -98,15 +136,19 @@ const Laborer: React.FC = () => {
                 <Row gutter={16}>
                     {/* Left Column: Filters */}
                     <Col span={6} className="filter-section">
-                        <Select placeholder="Select Category" className="filter-select" style={{ width: '100%', marginBottom: '16px' }}>
-                            <Option value="plumber">Plumber</Option>
-                            <Option value="electrician">Electrician</Option>
-                            {/* Add more categories */}
+                        <Select onChange={handleCategoryChange} value={selectedCategory} placeholder="Select Category" className="filter-select" style={{ width: '100%', marginBottom: '16px' }}>
+                            {categories.map((category, index) => (
+                                <Option key={category.typeId} value={category.type}>
+                                    {category.type.charAt(0).toUpperCase() + category.type.slice(1)}
+                                </Option>
+                            ))}
                         </Select>
-                        <Select placeholder="Select Area" className="filter-select" style={{ width: '100%' }}>
-                            <Option value="area1">Area 1</Option>
-                            <Option value="area2">Area 2</Option>
-                            {/* Add more areas */}
+                        <Select onChange={handleAreaChange} value={selectedArea} placeholder="Select Area" className="filter-select" style={{ width: '100%' }}>
+                            {areas.map((area, index) => (
+                                <Option key={area.areaId} value={area.areaName}>
+                                    {area.areaName.charAt(0).toUpperCase() + area.areaName.slice(1)}
+                                </Option>
+                            ))}
                         </Select>
                     </Col>
 

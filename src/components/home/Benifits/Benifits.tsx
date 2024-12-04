@@ -61,7 +61,7 @@ const Benefits: React.FC = () => {
         <section className="benefitsSection">
             
             <Row gutter={[16, 16]} justify="center" className="benefitsRow">
-                <Col span={8}>
+                <Col span={8} className='benifitsName'>
                     <Title level={3} className="benefitsTitle">
                         Be Smart to Use 
                     </Title>

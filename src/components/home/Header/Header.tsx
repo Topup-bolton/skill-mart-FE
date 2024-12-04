@@ -4,7 +4,6 @@ import { SearchOutlined } from '@ant-design/icons';
 import './Header.css';
 import heroImage from '../../../assets/home-hero-image.png';
 import { useNavigate } from "react-router-dom";
-import { createNewLaborer, deleteLaborer, findLaboreByName, getAllLaborers, updateLaborer } from '../../../service/laborer-management-service';
 const { Title, Text } = Typography;
 
 const Header: React.FC = () => {
@@ -12,22 +11,9 @@ const Header: React.FC = () => {
     const navigate = useNavigate();
 
     const searchLaborer = async () => {
-        // const data = await findLaboreByName(searchValue)
-        navigate("/find-laborer"
-            , { state: { search: searchValue } }
+        navigate("/find-laborer", { state: { search: searchValue } }
         );
-
-
-        // setTableDataFiltered(data.response);
     }
-
-
-
-
-
-
-
-
 
     return (
         <section className="header-section">
@@ -35,7 +21,7 @@ const Header: React.FC = () => {
             <Row justify="center" align="middle" className="header-row">
                 {/* Text Section */}
                 <Col span={12} className="header-content">
-                    <Title level={2} className="header-title">
+                    <Title  className="header-title">
                         Find the Perfect Match <br />
                         <span>and<span className="highlighted">  Get-It-Done</span></span>
                     </Title>

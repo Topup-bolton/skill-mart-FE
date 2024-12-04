@@ -54,6 +54,7 @@
   background: #ffffff;
   padding: 50px 20px;
   text-align: left;
+  margin-left: 100px;
 }
 
 .benefitsTitle {
@@ -104,7 +105,11 @@
 }
 .gear-img {
   position: relative;
-  left: 26.7vw;
+  left: 19.25vw;
   width: 130px;
 
 }
+
+/* .benifitsName{
+  margin-left: 40px;
+} */
