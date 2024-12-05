@@ -55,3 +55,16 @@ body {
     padding-left: 15px;
     border-radius: 20px;
 }
+
+.admin-log{
+    border-radius: 10px;
+    background-color: #37b7de;
+    padding: 9px;
+    
+
+}
+
+.admin-log-link{
+    color: #e0e0e0;
+    font-weight: bold;
+}

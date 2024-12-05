@@ -49,26 +49,30 @@ const ServiceProviders: React.FC = () => {
 
                 {providers.map((provider, index) => (
                     <Col span={4} key={index} className={`providerCol ${index % 2 === 0 ? "up" : "down"}`}>
-                        <Card className="providerCard" hoverable>
-                            <div className="cardContent">
+                        <div className="providerCard" >
+                            {/* <div className="cardContent"> */}
                                 {/* Circular image with border */}
                                 <div className="imageContainer">
                                     <img src={images[index % images.length]} alt={provider.firstName} className="providerImage" />
                                 </div>
                                 {/* Provider details */}
-                                <div className="providerDetails">
-                                    <div className="providerName">{provider.firstName} {provider.lastName}</div>
-                                    <div className="providerService">{provider.serviceType}</div>
-                                    <div className="providerRating">
+                            <div className="providerDetails">
+                                <Row >
+                                <div className="providerName">{provider.firstName} {provider.lastName}</div>
+                                <div className="providerService">{provider.serviceType}</div>
+                                </Row>
+                                    
+                                    
+                                <div className="providerRating">
                                         <Rate allowHalf value={provider.stars} disabled />
                                     </div>
                                     {/* <div className="providerWorks">{provider.works}+ Works</div> */}
                                 </div>
-                            </div>
-                        </Card>
+                            {/* </div> */}
+                        </div>
                     </Col>
                 ))}
-                <Col span={6} className="service-content">
+                <Col span={5} className="service-content">
                     <Title level={3} className="benefitsTitle">
                         Meet Our Best Service
                     </Title>

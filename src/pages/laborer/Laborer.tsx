@@ -116,10 +116,6 @@ const Laborer: React.FC = () => {
         console.log("Selected Area:", value);
     };
 
-
-
-
-
     const showModal = (provider: Laborer) => {
         setSelectedProvider(provider);
         setIsModalVisible(true);

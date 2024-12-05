@@ -6,6 +6,7 @@ const BackendEndpoints = {
     UPDATE_LABORER:"api/v1/user/alterUserById",
     FIND_USER_BY_NAME: "api/v1/user/findAllActiveLikeByFirstNameOrLastName",
     
+    
 
     //service area
     ADD_NEW_SERVICE_AREA:"api/v1/serviceArea/addServiceArea",
@@ -20,6 +21,9 @@ const BackendEndpoints = {
      
     // rate
     GET_ALL_USER_BY_RATE:"api/v1/rate/findUserOrderByRateStarCount",
+
+    //login
+    LOGIN_USER:"api/v1/auth/login"
 } 
 
 export default BackendEndpoints;
