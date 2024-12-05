@@ -5,6 +5,8 @@ const BackendEndpoints = {
     DELETE_LABORER: "api/v1/user/removeUserById",
     UPDATE_LABORER:"api/v1/user/alterUserById",
     FIND_USER_BY_NAME: "api/v1/user/findAllActiveLikeByFirstNameOrLastName",
+    FIND_LABOR_BY_AREA: "api/v1/user/findAllByServiceArea",
+    FIND_LABOR_BY_TYPE: "api/v1/user/findAllByServiceType",
     
 
     //service area

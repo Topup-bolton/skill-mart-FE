@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Select, Card, Avatar, Typography, Button, Rate, Modal } from 'antd';
 import { PhoneOutlined, GlobalOutlined } from '@ant-design/icons';
+import { BsFacebook } from "react-icons/bs";
 import './style/Laborer.css';
 import UserHeader from '../../components/layout/header/user-header/UserHeader';
 import Footer from '../../components/layout/footer/Footer';
 import { useLocation } from "react-router-dom";
-import { findLaboreByName, getAllLaborers } from '../../service/laborer-management-service';
+import { findLaboreByName, getAllLaborers, getAllLaborersByArea } from '../../service/laborer-management-service';
 
 import worker1 from "../../assets/workers/download (1).jpg";
 import worker2 from "../../assets/workers/download.jpg";
@@ -49,20 +50,15 @@ const Laborer: React.FC = () => {
     const [categories, setCategories] = useState<Category[]>([]);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [areas, setAreas] = useState<Area[]>([]);
-    const [selectedArea, setSelectedArea] = useState<string | null>(null);
+    const [selectedArea, setSelectedArea] = useState<string | "">("");
     const images = [worker1, worker2, worker3, worker4];
 
     const location = useLocation();
     const { search } = location.state || {};
 
-    console.log('====================================');
-    console.log(search);
-    console.log('====================================');
-
     useEffect(() => {
         const searchLaborer = async () => {
             const data = await findLaboreByName(search)
-
             console.log('===============  searched dta =====================');
             console.log(data.response);
             console.log('====================================');
@@ -95,6 +91,19 @@ const Laborer: React.FC = () => {
         getAllServiceArea();
     }, []);
 
+    useEffect(() => {
+        const searchLaborerByArea = async () => {
+            const data = await getAllLaborersByArea(selectedArea);
+
+            console.log('===============  searched dta  for selected area =====================');
+            console.log(data.response);
+            console.log('====================================');
+            //setServiceProviders(data.response);
+        }
+        searchLaborerByArea();
+
+    }, [selectedArea])
+
     const getAllServiceArea = async () => {
         const data = await getAllServiceAreas();
         setAreas(data.response);
@@ -105,7 +114,6 @@ const Laborer: React.FC = () => {
         setCategories(data.response);
     }
 
-
     const handleCategoryChange = (value: string) => {
         setSelectedCategory(value);
         console.log('Selected Category:', value);
@@ -115,10 +123,6 @@ const Laborer: React.FC = () => {
         setSelectedArea(value);
         console.log("Selected Area:", value);
     };
-
-
-
-
 
     const showModal = (provider: Laborer) => {
         setSelectedProvider(provider);
@@ -137,6 +141,9 @@ const Laborer: React.FC = () => {
                     {/* Left Column: Filters */}
                     <Col span={6} className="filter-section">
                         <Select onChange={handleCategoryChange} value={selectedCategory} placeholder="Select Category" className="filter-select" style={{ width: '100%', marginBottom: '16px' }}>
+                            <Option key="-1" value="-1">
+                                --select--
+                            </Option>
                             {categories.map((category, index) => (
                                 <Option key={category.typeId} value={category.type}>
                                     {category.type.charAt(0).toUpperCase() + category.type.slice(1)}
@@ -172,7 +179,7 @@ const Laborer: React.FC = () => {
                                             <div className="contact-section">
                                                 <PhoneOutlined /> {provider.mobile}
                                                 <Link href={provider.links} target="_blank">
-                                                    <GlobalOutlined /> Website
+                                                    <BsFacebook /> {provider.links}
                                                 </Link>
                                             </div>
                                         </div>
@@ -189,43 +196,6 @@ const Laborer: React.FC = () => {
                     <Button>Previous</Button>
                     <Button>Next</Button>
                 </div>
-
-
-                {/* Modal for Provider Details */}
-                {/* <Modal
-                    title={`${selectedProvider?.firstName || ''} ${selectedProvider?.lastName || ''}`}
-                    visible={isModalVisible}
-                    onCancel={handleCancel}
-                    footer={[
-                        <Button key="close" onClick={handleCancel}>
-                            Close
-                        </Button>,
-                    ]}
-                >
-                    {selectedProvider && (
-                        <div className="provider-modal-content">
-                            <Avatar src={selectedProvider.imageUrl} size={80} style={{ marginBottom: 16 }} />
-                            <Title level={5}>{selectedProvider.serviceType}</Title>
-                            <div className="rating-section">
-                                <Rate allowHalf value={selectedProvider.rating} disabled />
-                                <Text> ({selectedProvider.serviceArea} Reviews)</Text>
-                            </div>
-                            <Text>{selectedProvider.qualification}</Text>
-                            <div className="contact-section" style={{ marginTop: 16 }}>
-                                <p>
-                                    <PhoneOutlined /> {selectedProvider.mobile}
-                                </p>
-                                <p>
-                                    <Link href={selectedProvider.website} target="_blank">
-                                        <GlobalOutlined /> Website
-                                    </Link>
-                                </p>
-                            </div>
-                        </div>
-                    )}
-                </Modal> */}
-
-
                 <Modal
                     title={null}
                     visible={isModalVisible}
