@@ -1,11 +1,4 @@
-/* Set body and html to occupy full height */
 
-
-/* Ensure root container (e.g., #root) is a flex container */
-
-
-
-/* Footer Container */
 .footer-container {
     background-color: #4a9cb4;
     color: white;
@@ -13,11 +6,9 @@
     font-family: Arial, sans-serif;
     min-height: 10vh;
     position: static;
-    bottom: 0; /* Position it at the bottom */
+    bottom: 0; 
     z-index: 1000; 
 }
-
-/* Footer Content */
 .footer-content {
     max-width: 100%;
     margin: 0 ;
@@ -25,10 +16,8 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 0 0px;
-    /* height: fit-content; */
 }
 
-/* Footer Logo Section */
 .footer-logo-section {
     flex: 1;
 }
@@ -38,7 +27,6 @@
     margin-bottom: 20px;
 }
 
-/* Footer Sections */
 .footer-section {
     flex: 1;
     min-width: 100px;
@@ -69,7 +57,6 @@
     text-decoration: underline;
 }
 
-/* Footer Bottom */
 .footer-bottom {
     text-align: center;
     padding: 0, 0px;
@@ -79,7 +66,6 @@
     height: 30px;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
@@ -96,3 +82,95 @@
         margin-bottom: 15px;
     }
 }
+
+
+/* Footer Container */
+/* .footer-container {
+    background-color: #4a9cb4;
+    color: white;
+    padding: 5px 0 0 0; /* Reduced padding */
+    font-family: Arial, sans-serif;
+    position: fixed; /* Keep it fixed at the bottom */
+    bottom: 0; /* Position it at the bottom */
+    width: 100%; /* Ensure it spans the full width */
+    z-index: 1000; 
+}
+
+/* Footer Content */
+.footer-content {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 20px; /* Adjusted padding */
+}
+
+/* Footer Logo Section */
+.footer-logo-section {
+    flex: 1;
+}
+
+.footer-logo {
+    width: 100px; /* Reduced width */
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+/* Footer Sections */
+.footer-section {
+    flex: 1;
+    min-width: 100px;
+    margin-bottom: 0px; /* Reduced margin */
+}
+
+.footer-section h4 {
+    font-size: 14px; /* Reduced font size */
+    margin: 0;
+    font-weight: bold;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section li {
+    margin-bottom: 5px;
+    font-size: 12px; /* Reduced font size */
+    cursor: pointer;
+}
+
+.footer-section li:hover {
+    text-decoration: underline;
+
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 0px 0; /* Reduced padding */
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 12px; /* Reduced font size */
+    color: rgba(255, 255, 255, 0.8);
+    background-color:rgba(55, 111, 130, 1);
+    ;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        text-align: center;
+        margin-bottom: 6px; /* Reduced margin */
+    }
+
+    .footer-logo-section {
+        text-align: center;
+        margin-bottom: 10px; /* Reduced margin */
+    }
+} */

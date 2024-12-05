@@ -20,6 +20,7 @@ const UserHeader: React.FC = () => {
             </div>
 
             <div className="header-search">
+            <a href="/login" className="nav-link active admin-log"><Link className='admin-log-link' to={'/login'}>Log As Admin</Link></a>
                 {/* <Input 
                     placeholder="Search here" 
                     suffix={<SearchOutlined />} 
