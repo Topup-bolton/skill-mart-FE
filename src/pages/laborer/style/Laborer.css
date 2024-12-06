@@ -24,6 +24,11 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease,
+}
+.provider-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .provider-details {
@@ -42,6 +47,7 @@
     align-items: center;
     gap: 8px;
     font-size: 14px;
+    justify-content: space-evenly;
 }
 
 .contact-section {
@@ -50,6 +56,7 @@
     gap: 12px;
     font-size: 14px;
     margin-top: 8px;
+    justify-content: space-evenly;
 }
 
 .pagination-section {
@@ -106,6 +113,9 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    box-shadow: 0 0px 0px  rgba(0, 0, 0, 0.1);
+   
+
 }
 
 .modal-contact a {
@@ -116,9 +126,21 @@
     margin-bottom: 24px;
 }
 
+.title-area{
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+}
+
+.text-area{
+    position: relative;
+    top: -20px;
+}
+
 .modal-reviews {
     margin-top: 16px;
 }
+
 
 .review-item {
     border-top: 1px solid #f0f0f0;
