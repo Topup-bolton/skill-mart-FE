@@ -72,3 +72,25 @@ export const getAllLaborersByRating = async (): Promise<GetLaborerModel> => {
         throw apiError;
     }
 }
+
+export const getAllLaborersByArea = async (serviceArea:string): Promise<GetLaborerModel> => {
+    try {
+        const apiResponse = await AxiosService.get<GetLaborerModel>(
+            BackendEndpoints.FIND_LABOR_BY_AREA+`?serviceArea=${serviceArea}`,
+        )
+        return apiResponse.data;
+    } catch (apiError) {
+        throw apiError;
+    }
+}
+
+export const getAllLaborersByType = async (serviceType:string): Promise<GetLaborerModel> => {
+    try {
+        const apiResponse = await AxiosService.get<GetLaborerModel>(
+            BackendEndpoints.FIND_LABOR_BY_TYPE+`?serviceType=${serviceType}`,
+        )
+        return apiResponse.data;
+    } catch (apiError) {
+        throw apiError;
+    }
+}
