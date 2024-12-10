@@ -21,8 +21,14 @@ export const laborerManagementTableColunms = (
             width: 250,
         },
         {
-            title: "Service Type",
+            
+            title: "Work Type",
             dataIndex: "serviceType",
+            width: 250,
+        },
+        {
+            title: "Service Area",
+            dataIndex: "serviceArea",
             width: 250,
         },
         {

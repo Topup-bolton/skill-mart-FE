@@ -30,7 +30,7 @@ const AdminHeader: React.FC = () => {
 
             <Menu theme="light" mode="horizontal"  className="header-menu">
                 <a href='/admin-dashboard'  key="1">Dashboard</a>
-                <a href='/laborer-manegemnt' key="2" style={{marginLeft:'30px',marginRight:'30px'}}> Labor Management</a>
+                <a href='/laborer-manegemnt' key="2" style={{ marginLeft: '30px', marginRight: '30px' }}> Labourer Management</a>
                 <a key="4">Reports</a>
             </Menu>
 
