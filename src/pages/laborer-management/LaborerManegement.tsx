@@ -78,7 +78,11 @@ const LaborerManagement = () => {
 
     const getLaborers = async () => {
         const data = await getAllLaborers()
-        setTableDataFiltered(data.response);
+        const modifiedData = data.response.map((item) => ({
+            ...item,
+            firstName: `${item.firstName} ${item.lastName}`, // Concatenating firstName and lastName
+        }));
+        setTableDataFiltered(modifiedData);
     }
 
     const onClickSave = async () => {
@@ -162,7 +166,7 @@ const LaborerManagement = () => {
             <AdminHeader />
             <Row gutter={16} align="middle" justify="space-between" style={{ marginBottom: '30px' }}>
                 <Col>
-                    <h3>Laborer Management</h3>
+                    <h3>Labourer Management</h3>
                 </Col>
 
                 <Col>
@@ -230,7 +234,7 @@ const LaborerManagement = () => {
                                 icon={<PlusOutlined />}
                                 onClick={showDrawer}
                             >
-                                Add Laborer
+                                Add Labourer
                             </Button>
                         </Col>
                     </Row>
@@ -249,7 +253,7 @@ const LaborerManagement = () => {
 
             <Drawer
                 width={600}
-                title={<span style={{ color: '#3D8CA7', fontWeight: '700' }}>Worker Registration</span>}
+                title={<span style={{ color: '#3D8CA7', fontWeight: '700' }}>Labourer Registration</span>}
                 placement="right"
                 onClose={onClose}
                 open={open}
@@ -379,6 +383,7 @@ const LaborerManagement = () => {
                                 <Space>
                                     <Button
                                         className='btn'
+                                        onClick={()=> onClose()}
                                     >
                                         CANCEL
                                     </Button>
