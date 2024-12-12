@@ -145,7 +145,7 @@ const HomePage: React.FC = () => {
             <UserHeader/>
             <Header />
             <div className="home-page-container">
-                <Services />
+                {/* <Services /> */}
                 <img src={gearImageLeft} alt="leftGear" />
                 <ServiceProviders />
                 

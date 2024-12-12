@@ -181,7 +181,7 @@ const Laborer: React.FC = () => {
         const fetchLaborers = async () => {
             try {
                 if (search) {
-                    const searchResults = await findLaboreByName(search);
+                    const searchResults = await getAllLaborersByType(search);
                     setServiceProviders(searchResults.response);
                 } else if (selectedCategory !== '-1' && selectedArea !== '-1') {
                     const areaResults = await getAllLaborersByArea(selectedArea);
@@ -230,7 +230,7 @@ const Laborer: React.FC = () => {
                     <Col span={6} className="filter-section">
                         <Select onChange={handleCategoryChange} value={selectedCategory} placeholder="Select Category" className="filter-select" style={{ width: '100%', marginBottom: '16px' }}>
                             <Option key="-1" value="-1">
-                                --select--
+                                Select Type
                             </Option>
                             {categories.map((category, index) => (
                                 <Option key={category.typeId} value={category.type}>
@@ -240,7 +240,7 @@ const Laborer: React.FC = () => {
                         </Select>
                         <Select onChange={handleAreaChange} value={selectedArea} placeholder="Select Area" className="filter-select" style={{ width: '100%' }}>
                             <Option key="-1" value="-1">
-                                --select--
+                                Select Area
                             </Option>
                             {areas.map((area, index) => (
                                 <Option key={area.areaId} value={area.areaName}>

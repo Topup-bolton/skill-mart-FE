@@ -15,7 +15,7 @@ const UserHeader: React.FC = () => {
             <div className="header-nav">
                 <a href="/" className="nav-link"><Link to={'/'}>Home</Link></a>
                 
-                <a href="/find-laborer" className="nav-link active"><Link to={'/find-laborer'}>Find-Laborer</Link></a>
+                <a href="/find-laborer" className="nav-link active"><Link to={'/find-laborer'}>Find-Worker</Link></a>
                 <a href="/about" className="nav-link"><Link to={'/about'}>About</Link></a>
             </div>
 

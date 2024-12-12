@@ -30,7 +30,7 @@ const Header: React.FC = () => {
                     </Text>
                     <div className="search-bar-container">
                         <Input
-                            placeholder="Job Title or Key Word"
+                            placeholder="Search by Worker type"
                             //prefix={}
                             className="search-bar"
                             onChange={(e) => setSearchValue(e.target.value)} // Update state
@@ -45,10 +45,10 @@ const Header: React.FC = () => {
                 {/* Hero Image Section */}
                 <Col span={12} className="header-image-container">
                     <img src={heroImage} alt="Hero" className="hero-image" />
-                    <div className="service-callout">
+                    {/* <div className="service-callout">
                         <Text className="callout-text">Need a person for repair work at home?</Text>
                         <Button type="primary" className="callout-button">Obtain Service</Button>
-                    </div>
+                    </div> */}
                 </Col>
             </Row>
         </section>
