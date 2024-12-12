@@ -230,7 +230,7 @@ const Laborer: React.FC = () => {
                     <Col span={6} className="filter-section">
                         <Select onChange={handleCategoryChange} value={selectedCategory} placeholder="Select Category" className="filter-select" style={{ width: '100%', marginBottom: '16px' }}>
                             <Option key="-1" value="-1">
-                                Select Category
+                                Select Type
                             </Option>
                             {categories.map((category, index) => (
                                 <Option key={category.typeId} value={category.type}>
