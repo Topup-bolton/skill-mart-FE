@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Select, Card, Avatar, Typography, Button, Rate, Modal } from 'antd';
+import { Row, Col, Select, Card, Avatar, Typography, Button, Rate, Modal,Input } from 'antd';
 import { PhoneOutlined, GlobalOutlined } from '@ant-design/icons';
 import { BsFacebook } from "react-icons/bs";
 import './style/Laborer.css';
@@ -14,6 +14,7 @@ import worker3 from "../../assets/workers/images (1).jpg";
 import worker4 from "../../assets/workers/images.jpg";
 import { getAllServiceAreas } from '../../service/service-area';
 import { getAllServiceTypes } from '../../service/service-type';
+import TextArea from 'antd/es/input/TextArea';
 
 
 const { Title, Text, Link } = Typography;
@@ -59,6 +60,13 @@ const Laborer: React.FC = () => {
 
     const location = useLocation();
     const { search } = location.state || {};
+
+    const [isRateModalVisible, setRateModalVisible] = useState(false);
+    const submitReview = () => {
+        // Handle the review submission logic here
+        setRateModalVisible(false); // Close modal after submission
+        console.log("Review submitted");
+    };
 
 
 
@@ -217,8 +225,8 @@ const Laborer: React.FC = () => {
         if (value === '-1') setSelectedCategory('-1');
     };
 
-    const ClickRatings =(id:string)=> {
-        
+    const ClickRatings = (id: string) => {
+
     }
 
     return (
@@ -280,51 +288,51 @@ const Laborer: React.FC = () => {
                                 </Row> */}
 
 
-<Row align="middle" gutter={16}>
-                {/* Avatar Section */}
-                <Col span={2}>
-                    <Avatar
-                        src={images[index % images.length]}
-                        size={144}
-                        style={{ border: '2px solid #d9d9d9' }}
-                    />
-                </Col>
+                                <Row align="middle" gutter={16}>
+                                    {/* Avatar Section */}
+                                    <Col span={2}>
+                                        <Avatar
+                                            src={images[index % images.length]}
+                                            size={144}
+                                            style={{ border: '2px solid #d9d9d9' }}
+                                        />
+                                    </Col>
 
-                {/* Details Section */}
-                <Col span={22}>
-                    <div className="provider-details">
-                        {/* Name and Service Type */}
-                        <Title level={5} style={{ margin: 0 }}>
-                            {provider.firstName} <b>{provider.lastName}</b>
-                        </Title>
-                        <Text className="position-text" style={{ display: 'block', color: '#888' }}>
-                            {provider.serviceType}
-                        </Text>
+                                    {/* Details Section */}
+                                    <Col span={22}>
+                                        <div className="provider-details">
+                                            {/* Name and Service Type */}
+                                            <Title level={5} style={{ margin: 0 }}>
+                                                {provider.firstName} <b>{provider.lastName}</b>
+                                            </Title>
+                                            <Text className="position-text" style={{ display: 'block', color: '#888' }}>
+                                                {provider.serviceType}
+                                            </Text>
 
-                        {/* Rating and Reviews */}
-                        <div className="rating-section" style={{ marginTop: '8px' }}>
-                            <Rate  allowHalf value={provider.stars} disabled style={{ fontSize: '18px' }} />
-                            <Text style={{ marginLeft: '8px', color: '#555' }}>
-                                ({provider.qualification} Reviews)
-                            </Text>
-                        </div>
+                                            {/* Rating and Reviews */}
+                                            <div className="rating-section" style={{ marginTop: '8px' }}>
+                                                <Rate allowHalf value={provider.stars} disabled style={{ fontSize: '18px' }} />
+                                                <Text style={{ marginLeft: '8px', color: '#555' }}>
+                                                    ({provider.qualification} Reviews)
+                                                </Text>
+                                            </div>
 
-                        {/* Contact Section */}
-                        <div className="contact-section" style={{ marginTop: '12px' }}>
-                            <div>
-                                <PhoneOutlined style={{ marginRight: '8px' }} />
-                                <Text>{provider.mobile}</Text>
-                            </div>
-                            <div style={{ marginTop: '4px' }}>
-                                <Link href={provider.links} target="_blank">
-                                    <BsFacebook style={{ marginRight: '8px' }} />
-                                    <Text>{provider.links}</Text>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </Col>
-            </Row>
+                                            {/* Contact Section */}
+                                            <div className="contact-section" style={{ marginTop: '12px' }}>
+                                                <div>
+                                                    <PhoneOutlined style={{ marginRight: '8px' }} />
+                                                    <Text>{provider.mobile}</Text>
+                                                </div>
+                                                <div style={{ marginTop: '4px' }}>
+                                                    <Link href={provider.links} target="_blank">
+                                                        <BsFacebook style={{ marginRight: '8px' }} />
+                                                        <Text>{provider.links}</Text>
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Col>
+                                </Row>
                             </Card>
                         ))}
                     </Col>
@@ -343,31 +351,31 @@ const Laborer: React.FC = () => {
                     visible={isModalVisible}
                     onCancel={handleCancel}
                     footer={null}
-                    width={800}
+                    width={1000}
                 >
                     {selectedProvider && (
                         <div className="provider-modal-content">
                             {/* Header Section */}
                             <div className="modal-header">
                                 <Avatar src={worker1} size={200} className="modal-avatar" />
-                                
+
                                 <div className="modal-header-details">
                                     <Title level={4}>{`${selectedProvider.firstName} ${selectedProvider.lastName}`}</Title>
                                     <Text>{selectedProvider.serviceType}</Text>
                                     <br />
                                     <Rate allowHalf value={selectedProvider.stars} disabled />
                                     <div className="rating-section">
-                                        
+
                                         {/* <Text className="rating-count">({selectedProvider.reviewsCount} Reviews)</Text> */}
                                         {/* <Text className="works-count">{selectedProvider.worksCount}+ Works</Text> */}
                                     </div>
                                     <Row gutter={[16, 16]}>
                                         {/* Working Areas Section */}
                                         <Col span={7}>
-                                            
+
                                         </Col>
                                         <Col span={17}>
-                                        
+
                                             <div className='title-area-main'>
                                                 <span className='title-area'>Working Areas</span>
                                                 <Text className='text-area'>{selectedProvider.serviceArea}</Text>
@@ -394,8 +402,10 @@ const Laborer: React.FC = () => {
                             <div className="modal-reviews">
 
                                 <Button
-                                    // onClick={clickRatings()}
-                                    type="primary" style={{ marginBottom: 16 }}>
+                                    type="primary"
+                                    style={{ marginBottom: 16 }}
+                                    onClick={() => setRateModalVisible(true)} // Open the second modal
+                                >
                                     Rate/Review
                                 </Button>
 
@@ -416,7 +426,78 @@ const Laborer: React.FC = () => {
                                 </div>
                             </div>
                         </div>
+
                     )}
+
+
+
+<Modal
+    title={
+        <Title level={4} style={{ textAlign: "center", color: "#4A90E2" }}>
+            Rate and Review
+        </Title>
+    }
+    visible={isRateModalVisible}
+    onCancel={() => setRateModalVisible(false)}
+    footer={null}
+    width={600}
+>
+    <div style={{ padding: "0 20px" }}>
+        <Text
+            style={{
+                color: "red",
+                display: "block",
+                textAlign: "center",
+                marginBottom: "20px",
+                fontSize: "14px",
+            }}
+        >
+            Please note that your confidential personal details (Email & Contact Number)
+            will not be displayed with the reviews. We are collecting those only for
+            verification purposes.
+        </Text>
+        <Row gutter={[16, 16]}>
+            <Col span={12}>
+                <Input placeholder="First Name" />
+            </Col>
+            <Col span={12}>
+                <Input placeholder="Last Name" />
+            </Col>
+        </Row>
+        <Row gutter={[16, 16]} style={{ marginTop: "16px" }}>
+            <Col span={12}>
+                <Input placeholder="Phone Number" prefix="+94" />
+            </Col>
+            <Col span={12}>
+                <Input placeholder="Email Address" />
+            </Col>
+        </Row>
+        <div style={{ marginTop: "20px" }}>
+            <Title level={5} style={{ marginBottom: "8px" }}>
+                Rate John Doe
+            </Title>
+            <Rate style={{ fontSize: "24px" }} />
+        </div>
+        <div style={{ marginTop: "16px" }}>
+            <TextArea
+                rows={4}
+                placeholder="Share details of your own experience of his/her/their service"
+            />
+        </div>
+        <div
+            style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: "20px",
+            }}
+        >
+            <Button onClick={() => setRateModalVisible(false)}>Cancel</Button>
+            <Button type="primary" onClick={() => submitReview()}>
+                Submit
+            </Button>
+        </div>
+    </div>
+</Modal>
                 </Modal>
 
             </div>
