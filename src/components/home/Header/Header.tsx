@@ -30,7 +30,7 @@ const Header: React.FC = () => {
                     </Text>
                     <div className="search-bar-container">
                         <Input
-                            placeholder="Worker type or area"
+                            placeholder="Search by Worker type"
                             //prefix={}
                             className="search-bar"
                             onChange={(e) => setSearchValue(e.target.value)} // Update state

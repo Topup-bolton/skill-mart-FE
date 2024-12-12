@@ -181,7 +181,7 @@ const Laborer: React.FC = () => {
         const fetchLaborers = async () => {
             try {
                 if (search) {
-                    const searchResults = await findLaboreByName(search);
+                    const searchResults = await getAllLaborersByType(search);
                     setServiceProviders(searchResults.response);
                 } else if (selectedCategory !== '-1' && selectedArea !== '-1') {
                     const areaResults = await getAllLaborersByArea(selectedArea);
