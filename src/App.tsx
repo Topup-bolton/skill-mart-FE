@@ -11,6 +11,7 @@ import AdminHeader from './components/layout/header/admin-header/AdminHeader';
 import AdminDashboard from './pages/admin-dashboard/AdminDashboard';
 import LaborerManagement from './pages/laborer-management/LaborerManegement';
 import SettingPage from './pages/setting/SettingPage';
+import ReportPage from './pages/report/Report';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/admin-dashboard' element={<AdminDashboard />} />
         <Route path='/laborer-manegemnt' element={<LaborerManagement />} />
         <Route path='/setting' element={<SettingPage />} />
+        <Route path='/report' element={<ReportPage />} />
         
     </Routes>
 {/* <LaborerManagement/>     */}
