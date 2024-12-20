@@ -22,8 +22,8 @@ const BackendEndpoints = {
     DELETE_SERVICE_TYPE: "api/v1/serviceType/removeServiceTypeById",
      
     // rate
-    GET_ALL_USER_BY_RATE:"api/v1/rate/findUserOrderByRateStarCount",
-
+    GET_ALL_USER_BY_RATE: "api/v1/rate/findUserOrderByRateStarCount",
+    ADD_NEW_RATE:"api/v1/rate/addRate",
     //login
     LOGIN_USER:"api/v1/auth/login"
 } 
