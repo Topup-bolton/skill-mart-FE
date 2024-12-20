@@ -33,7 +33,7 @@ const Header: React.FC = () => {
                             placeholder="Search by Worker type"
                             //prefix={}
                             className="search-bar"
-                            onChange={(e) => setSearchValue(e.target.value)} // Update state
+                            onChange={(e) => setSearchValue(e.target.value||"")} // Update state
                             onPressEnter={searchLaborer}
                         />
                         <Button onClick={searchLaborer} className="search-button">

@@ -10,7 +10,7 @@ export const createNewLaborer = async (reqBody: LaborerModel): Promise<LaborerMo
             reqBody
         )
         return apiResponse.data;
-    } catch (apiError) {
+    } catch (apiError:any) {
         const errorMessage =apiError.response.data.message
         DisplayErrorNotification(errorMessage);
         throw apiError;

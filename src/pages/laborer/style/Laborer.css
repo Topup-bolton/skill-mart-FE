@@ -33,8 +33,11 @@
 
 .provider-details {
     display: flex;
+    align-items:start;
     flex-direction: column;
     gap: 4px;
+    position: relative;
+    left: 120px;
 }
 
 .position-text {
@@ -52,11 +55,21 @@
 
 .contact-section {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
     font-size: 14px;
     margin-top: 8px;
     justify-content: space-evenly;
+}
+
+.provider-contact-link{
+    margin-top: 4px;
+    margin-left:350px;
+    color: rgba(97, 198, 232, 1);
+}
+.link-text{
+    
+    color: rgba(97, 198, 232, 1);
 }
 
 .pagination-section {
@@ -86,6 +99,12 @@
     margin-bottom: 24px;
     border-bottom: 1px solid #f0f0f0;
     padding-bottom: 16px;
+}
+
+.modal-header-details{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .modal-avatar {
@@ -126,15 +145,27 @@
     margin-bottom: 24px;
 }
 
+.title-area-main{
+    display: flex;
+}
+
 .title-area{
     font-weight: bold;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.title-area1{
+    margin-left:150px ;
+    padding-left: 70px;
 }
 
 .text-area{
-    position: relative;
-    top: -20px;
+    /* position: relative; */
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 50px;
 }
 
 .modal-reviews {
