@@ -13,18 +13,18 @@ const ReportPage = () => {
 
     const reviews = [
         {
-            user: "John Doe",
+            user: "Piumika Dilshan",
             role: "Plumber",
-            reviewer: "L.Nuw***",
+            reviewer: "Chathumal Jayasinghe",
             rating: 5,
             time: "10/12/2024 11:04 PM",
             comment: "Friendly Person. Works on time. Completed the job within 2 hours. Highly Recommended.",
         },
         {
-            user: "John Doe",
-            role: "Plumber",
-            reviewer: "K.Ram***",
-            rating: 5,
+            user: "Shevoni Madushika",
+            role: "Carpainter",
+            reviewer: "Dilusha Ekanayake",
+            rating: 4,
             time: "09/12/2024 04:04 PM",
             comment: "Friendly Person. Works on time. Completed the job within 2 hours. Highly Recommended.",
         },
